@@ -26,7 +26,9 @@ You can build the project with the `parcel` command. You can also use the NPM sc
 
 ## SteemDesk On The Interwebs
 
-You can find a running version on [SteemDesk.com](https://steemdesk.com)
+You can find a running version on [SteemDesk.com](https://steemdesk.com).
+
+[Last build](http://epic-meninsky-98f230.netlify.com)
 
 
 ## How To Contribute
