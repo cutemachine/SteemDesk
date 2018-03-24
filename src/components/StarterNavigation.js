@@ -10,6 +10,7 @@ import DashboardIcon from '@atlaskit/icon/glyph/dashboard'
 import CreateIcon from '@atlaskit/icon/glyph/add'
 import ArrowleftIcon from '@atlaskit/icon/glyph/arrow-left'
 import EmojiNatureIcon from '@atlaskit/icon/glyph/emoji/nature'
+import HomeFilledIcon from '@atlaskit/icon/glyph/home-filled'
 
 import CreateDrawer from '../components/CreateDrawer'
 import SteemDeskLogo from '../images/SteemDesk.png'
@@ -17,7 +18,8 @@ import SteemDeskLogo from '../images/SteemDesk.png'
 export default class StarterNavigation extends React.Component {
   state = {
     navLinks: [
-      ['/', 'Home', DashboardIcon]
+      ['/', 'Home', HomeFilledIcon],
+      ['/dashboard', 'Dashboard', DashboardIcon]
     ]
   }
 

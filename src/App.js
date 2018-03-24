@@ -6,6 +6,7 @@ import Flag, { FlagGroup } from '@atlaskit/flag'
 import Modal from '@atlaskit/modal-dialog'
 import Page from '@atlaskit/page'
 import HomePage from './pages/HomePage'
+import Dashboard from './pages/Dashboard'
 import StarterNavigation from './components/StarterNavigation'
 import { selectors } from './state/rootReducer'
 import { uiOperations } from './state/ui'
@@ -43,6 +44,7 @@ class App extends Component {
           navigation={<StarterNavigation location={this.props.location} />}
         >
           <Route exact path='/' component={HomePage} />
+          <Route exact path='/dashboard' component={Dashboard} />
         </Page>
         <div>
           <FlagGroup onDismissed={this.onFlagDismissed}>
