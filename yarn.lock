@@ -88,6 +88,14 @@
     babel-runtime "^6.26.0"
     styled-components "1.4.6 - 3"
 
+"@atlaskit/field-text@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.npmjs.org/@atlaskit/field-text/-/field-text-4.3.0.tgz#4ef2a8ff7d0e16cfcee4df402bd82d087a7c6065"
+  dependencies:
+    "@atlaskit/field-base" "^8.2.1"
+    "@atlaskit/theme" "^2.4.1"
+    styled-components "1.4.6 - 3"
+
 "@atlaskit/flag@latest":
   version "6.5.1"
   resolved "https://registry.npmjs.org/@atlaskit/flag/-/flag-6.5.1.tgz#3a14627b6f06ddaad06526e7356c05927512a101"
@@ -127,6 +135,15 @@
     "@atlaskit/icon" "^10.12.1"
     "@atlaskit/theme" "^2.4.1"
     classnames "^2.2.5"
+    styled-components "1.4.6 - 3"
+
+"@atlaskit/input@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.npmjs.org/@atlaskit/input/-/input-1.7.1.tgz#de4908bdff5f420f1c6da98aa181b4d728afa18a"
+  dependencies:
+    "@atlaskit/theme" "^2.4.1"
+    babel-runtime "^6.26.0"
+    keycode "^2.1.7"
     styled-components "1.4.6 - 3"
 
 "@atlaskit/item@^5.1.1":
@@ -198,6 +215,13 @@
     raf-schd "^2.1.0"
     react-scrolllock "^2.0.1"
     react-transition-group "^2.2.1"
+    styled-components "1.4.6 - 3"
+
+"@atlaskit/page-header@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.npmjs.org/@atlaskit/page-header/-/page-header-2.4.1.tgz#37f3c66dd71334528716e7eab22b7f608330c68e"
+  dependencies:
+    "@atlaskit/util-shared-styles" "^2.10.3"
     styled-components "1.4.6 - 3"
 
 "@atlaskit/page@latest":

@@ -1,12 +1,26 @@
 import React, { Component } from 'react'
 import ContentWrapper from '../components/ContentWrapper'
-import PageTitle from '../components/PageTitle'
+import UsernameInput from '../components/UsernameInput'
+import Page from '@atlaskit/page'
+import PageHeader from '@atlaskit/page-header'
+
+const actionsContent = (
+  <UsernameInput />
+)
 
 class Dashboard extends Component {
   render () {
     return (
       <ContentWrapper>
-        <PageTitle>Dashboard</PageTitle>
+        <Page>
+          <PageHeader
+            breadcrumbs={null}
+            actions={actionsContent}
+            bottomBar={null}
+          >
+            Dashboard
+          </PageHeader>
+        </Page>
       </ContentWrapper>
     )
   }
