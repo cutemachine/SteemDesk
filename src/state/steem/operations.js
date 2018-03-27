@@ -6,6 +6,7 @@ const {
   usernameStatusChanged,
   usernameChanged,
   reputationSet,
+  followCountSet,
   errorOccurred,
   errorCleared
 } = actions
@@ -13,6 +14,7 @@ const {
 // Thunks
 const usernameSubmitted = (name) => async (dispatch) => {
   dispatch(usernameStatusChanged('VALIDATING'))
+  // account
   try {
     const [account] = await steem.api.getAccountsAsync([name])
     if (!account) { throw new Error('Sorry, no account found. Minimum 3 chars, no uppercase.') }
@@ -22,6 +24,14 @@ const usernameSubmitted = (name) => async (dispatch) => {
     dispatch(usernameStatusChanged('INVALID'))
     dispatch(errorOccurred(error.message))
   }
+  // follow count
+  try {
+    const followCount = await steem.api.getFollowCountAsync(name)
+    if (!followCount) { throw new Error('Sorry, could not get follow count for user.') }
+    dispatch(followCountSet(followCount))
+  } catch (error) {
+    dispatch(errorOccurred(error.message))
+  }
 }
 
 export default {
@@ -29,6 +39,7 @@ export default {
   usernameChanged,
   usernameSubmitted,
   reputationSet,
+  followCountSet,
   errorOccurred,
   errorCleared
 }

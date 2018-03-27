@@ -19,6 +19,11 @@ const reputationSet = (reputation) => ({
   reputation
 })
 
+const followCountSet = (followCount) => ({
+  type: types.FOLLOW_COUNT_SET,
+  followCount
+})
+
 const errorOccurred = (errorMessage) => ({
   type: types.ERROR_OCCURRED,
   errorMessage
@@ -33,6 +38,7 @@ export default {
   usernameStatusChanged,
   usernameChanged,
   usernameSubmitted,
+  followCountSet,
   reputationSet,
   errorOccurred,
   errorCleared

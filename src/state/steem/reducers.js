@@ -5,7 +5,8 @@ const INITIAL_STATE = {
   // VALID, INVALID, VALIDATING, UNCHECKED
   usernameStatus: 'UNCHECKED',
   errorMessage: '',
-  reputation: ''
+  reputation: '',
+  followCount: { follower_count: '', following_count: '' }
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -14,10 +15,13 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, usernameStatus: action.usernameStatus }
 
     case types.USERNAME_CHANGED:
-      return { ...state, username: action.username, usernameStatus: 'UNCHECKED', errorMessage: '', reputation: '' }
+      return { ...state, username: action.username, usernameStatus: 'UNCHECKED', errorMessage: '', reputation: '', followCount: INITIAL_STATE.followCount }
 
     case types.REPUTATION_SET:
       return { ...state, reputation: action.reputation }
+
+    case types.FOLLOW_COUNT_SET:
+      return { ...state, followCount: action.followCount }
 
     case types.ERROR_CLEARED:
     case types.ERROR_OCCURRED:

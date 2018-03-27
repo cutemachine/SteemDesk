@@ -43,11 +43,11 @@ class Dashboard extends Component {
             </GridColumn>
             <GridColumn medium={4}>
               <h3>Followers</h3>
-              <p>300</p>
+              <p>{this.props.followCount.follower_count}</p>
             </GridColumn>
             <GridColumn medium={4}>
               <h3>Following</h3>
-              <p>30</p>
+              <p>{this.props.followCount.following_count}</p>
             </GridColumn>
           </Grid>
         </Page>
@@ -58,9 +58,10 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
   const reputation = steemSelectors.selectReputation(state)
+  const followCount = steemSelectors.selectFollowCount(state)
   const errorMessage = steemSelectors.selectErrorMessage(state)
 
-  return { reputation, errorMessage }
+  return { reputation, followCount, errorMessage }
 }
 
 export default connect(mapStateToProps)(Dashboard)
