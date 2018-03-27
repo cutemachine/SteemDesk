@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   username: 'cutemachine',
   // VALID, INVALID, VALIDATING, UNCHECKED
   usernameStatus: 'UNCHECKED',
-  errorMessage: ''
+  errorMessage: '',
+  reputation: ''
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -13,7 +14,10 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, usernameStatus: action.usernameStatus }
 
     case types.USERNAME_CHANGED:
-      return { ...state, username: action.username, usernameStatus: 'UNCHECKED', errorMessage: '' }
+      return { ...state, username: action.username, usernameStatus: 'UNCHECKED', errorMessage: '', reputation: '' }
+
+    case types.REPUTATION_SET:
+      return { ...state, reputation: action.reputation }
 
     case types.ERROR_CLEARED:
     case types.ERROR_OCCURRED:

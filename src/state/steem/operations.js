@@ -1,9 +1,11 @@
 import actions from './actions'
 import steem from 'steem'
+import { formatReputation } from '../../common/utils'
 
 const {
   usernameStatusChanged,
   usernameChanged,
+  reputationSet,
   errorOccurred,
   errorCleared
 } = actions
@@ -15,6 +17,7 @@ const usernameSubmitted = (name) => async (dispatch) => {
     const [account] = await steem.api.getAccountsAsync([name])
     if (!account) { throw new Error('Sorry, no account found. Minimum 3 chars, no uppercase.') }
     dispatch(usernameStatusChanged('VALID'))
+    dispatch(reputationSet(formatReputation(account.reputation)))
     console.log('Account', account)
     // setAccount(account)
   } catch (error) {
@@ -46,6 +49,7 @@ export default {
   usernameStatusChanged,
   usernameChanged,
   usernameSubmitted,
+  reputationSet,
   errorOccurred,
   errorCleared
 }

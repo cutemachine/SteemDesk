@@ -14,6 +14,11 @@ const usernameSubmitted = () => ({
   type: types.USERNAME_SUBMITTED
 })
 
+const reputationSet = (reputation) => ({
+  type: types.REPUTATION_SET,
+  reputation
+})
+
 const errorOccurred = (errorMessage) => ({
   type: types.ERROR_OCCURRED,
   errorMessage
@@ -28,6 +33,7 @@ export default {
   usernameStatusChanged,
   usernameChanged,
   usernameSubmitted,
+  reputationSet,
   errorOccurred,
   errorCleared
 }

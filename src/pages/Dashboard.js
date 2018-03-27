@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import ContentWrapper from '../components/ContentWrapper'
 import UsernameInput from '../components/UsernameInput'
-import Page from '@atlaskit/page'
+import Page, { Grid, GridColumn } from '@atlaskit/page'
 import PageHeader from '@atlaskit/page-header'
 import ErrorIcon from '@atlaskit/icon/glyph/error'
 import Banner from '@atlaskit/banner'
@@ -36,6 +36,20 @@ class Dashboard extends Component {
           >
             Dashboard
           </PageHeader>
+          <Grid layout="fluid">
+            <GridColumn medium={4}>
+              <h3>Reputation</h3>
+              <p>{this.props.reputation}</p>
+            </GridColumn>
+            <GridColumn medium={4}>
+              <h3>Followers</h3>
+              <p>300</p>
+            </GridColumn>
+            <GridColumn medium={4}>
+              <h3>Following</h3>
+              <p>30</p>
+            </GridColumn>
+          </Grid>
         </Page>
       </ContentWrapper>
     )
@@ -43,9 +57,10 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
+  const reputation = steemSelectors.selectReputation(state)
   const errorMessage = steemSelectors.selectErrorMessage(state)
 
-  return { errorMessage }
+  return { reputation, errorMessage }
 }
 
 export default connect(mapStateToProps)(Dashboard)

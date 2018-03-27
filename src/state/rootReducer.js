@@ -21,5 +21,6 @@ export const selectors = {
   // Steem state
   selectUsername: state => steemSelectors.selectUsername(state.steem),
   selectUsernameStatus: state => steemSelectors.selectUsernameStatus(state.steem),
+  selectReputation: state => steemSelectors.selectReputation(state.steem),
   selectErrorMessage: state => steemSelectors.selectErrorMessage(state.steem)
 }
