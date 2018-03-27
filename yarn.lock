@@ -25,6 +25,14 @@
     "@atlaskit/tooltip" "^8.4.1"
     styled-components "1.4.6 - 3"
 
+"@atlaskit/banner@^4.2.2":
+  version "4.2.2"
+  resolved "https://registry.npmjs.org/@atlaskit/banner/-/banner-4.2.2.tgz#fb269fe030ecd4e41695a924f4e6e03af35ea3be"
+  dependencies:
+    "@atlaskit/theme" "^2.4.1"
+    babel-runtime "^6.26.0"
+    styled-components "1.4.6 - 3"
+
 "@atlaskit/blanket@^4.1.1":
   version "4.1.1"
   resolved "https://registry.npmjs.org/@atlaskit/blanket/-/blanket-4.1.1.tgz#73acc6ec35dce4abfffbcd5fc53837abc65cdce6"

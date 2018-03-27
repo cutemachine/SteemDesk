@@ -19,6 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "@atlaskit/avatar": "latest",
+    "@atlaskit/banner": "^4.2.2",
     "@atlaskit/button": "latest",
     "@atlaskit/css-reset": "latest",
     "@atlaskit/dropdown-menu": "latest",

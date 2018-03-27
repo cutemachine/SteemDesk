@@ -1,7 +1,7 @@
 {
     "parser": "babel-eslint",
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 7,
         "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true,
@@ -10,7 +10,8 @@
         }
     },
     "plugins": [
-        "react"
+        "react",
+        "transform-class-properties"
     ],
     "extends": ["eslint:recommended", "plugin:react/recommended"],
     "rules": {

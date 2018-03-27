@@ -14,8 +14,20 @@ const usernameSubmitted = () => ({
   type: types.USERNAME_SUBMITTED
 })
 
+const errorOccurred = (errorMessage) => ({
+  type: types.ERROR_OCCURRED,
+  errorMessage
+})
+
+const errorCleared = () => ({
+  type: types.ERROR_CLEARED,
+  errorMessage: ''
+})
+
 export default {
   usernameStatusChanged,
   usernameChanged,
-  usernameSubmitted
+  usernameSubmitted,
+  errorOccurred,
+  errorCleared
 }

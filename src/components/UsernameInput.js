@@ -16,33 +16,33 @@ class UsernameInput extends Component {
     this.props.usernameChanged(value)
   }
 
-  onSubmit () {
-    this.props.usernameSubmitted()
+  onSubmit (value) {
+    this.props.usernameSubmitted(value)
   }
 
   render () {
-    const isValidating = this.props.usernameStatus === 'VALIDATING' ? true : false
-    const isInvalid = this.props.usernameStatus === 'INVALID' ? true : false
+    const isValidating = this.props.usernameStatus === 'VALIDATING'
+    const isInvalid = this.props.usernameStatus === 'INVALID'
 
     return (
-      <FieldBase isInvalid={isInvalid} isLoading={isValidating} onBlur={() => this.onSubmit()}>
+      <FieldBase isInvalid={isInvalid} isLoading={isValidating}>
         <Input isEditing autoFocus
           onKeyUp={
             event => {
               const { keyCode } = event
-              if (keyCode === 13) this.onSubmit()
-              let validKeyCode = 
-                (keyCode === 8) ||  // backspace
+              if (keyCode === 13) this.onSubmit(event.target.value)
+              let validKeyCode =
+                (keyCode === 8) || // backspace
                 (keyCode === 46) || // delete
-                (keyCode > 47 && keyCode < 58)   || // number keys
-                (keyCode > 64 && keyCode < 91)   || // letter keys
-                (keyCode > 95 && keyCode < 112)  || // numpad keys
+                (keyCode > 47 && keyCode < 58) || // number keys
+                (keyCode > 64 && keyCode < 91) || // letter keys
+                (keyCode > 95 && keyCode < 112) || // numpad keys
                 (keyCode === 189) // - Dash
               if (validKeyCode) this.onChange(event.target.value)
             }
           }
-          type="text"
-          placeholder="username …"
+          type='text'
+          placeholder='username …'
         />
       </FieldBase>
     )
