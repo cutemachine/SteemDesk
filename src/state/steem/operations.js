@@ -1,6 +1,7 @@
 import actions from './actions'
 import steem from 'steem'
 import { formatReputation } from '../../common/utils'
+import uiActions from '../ui/actions'
 
 const {
   usernameStatusChanged,
@@ -22,6 +23,7 @@ const usernameSubmitted = (name) => async (dispatch, getState) => {
     if (!account) { throw new Error('Sorry, no account found. Minimum 3 chars, no uppercase.') }
     dispatch(usernameStatusChanged('VALID'))
     dispatch(reputationSet(formatReputation(account.reputation)))
+    dispatch(uiActions.addFlag(`Welcome ${name}`, 'SteemDesk loves you!'))
   } catch (error) {
     dispatch(usernameStatusChanged('INVALID'))
     dispatch(errorOccurred(error.message))
