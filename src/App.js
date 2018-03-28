@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import Flag, { FlagGroup } from '@atlaskit/flag'
 import Modal from '@atlaskit/modal-dialog'
 import Page from '@atlaskit/page'
-import HomePage from './pages/HomePage'
+import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import Delegation from './pages/Delegation'
 import StarterNavigation from './components/StarterNavigation'
@@ -44,7 +44,7 @@ class App extends Component {
           navigationWidth={this.context.navOpenState.width}
           navigation={<StarterNavigation location={this.props.location} />}
         >
-          <Route exact path='/' component={HomePage} />
+          <Route exact path='/' component={Home} />
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/delegation' component={Delegation} />
         </Page>
