@@ -7,6 +7,7 @@ const {
   usernameChanged,
   reputationSet,
   followCountSet,
+  delegationsSet,
   errorOccurred,
   errorCleared
 } = actions
@@ -32,6 +33,15 @@ const usernameSubmitted = (name) => async (dispatch) => {
   } catch (error) {
     dispatch(errorOccurred(error.message))
   }
+  // delegations
+  try {
+    const delegations = await steem.api.getVestingDelegationsAsync(name, -1, 100)
+    if (!delegations) { throw new Error('Sorry, could not get delegations for user.') }
+    dispatch(delegationsSet(delegations))
+    console.log(delegations)
+  } catch (error) {
+    dispatch(errorOccurred(error.message))
+  }
 }
 
 export default {
@@ -40,6 +50,7 @@ export default {
   usernameSubmitted,
   reputationSet,
   followCountSet,
+  delegationsSet,
   errorOccurred,
   errorCleared
 }

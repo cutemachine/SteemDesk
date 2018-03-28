@@ -24,6 +24,11 @@ const followCountSet = (followCount) => ({
   followCount
 })
 
+const delegationsSet = (delegations) => ({
+  type: types.DELEGATIONS_SET,
+  delegations
+})
+
 const errorOccurred = (errorMessage) => ({
   type: types.ERROR_OCCURRED,
   errorMessage
@@ -39,6 +44,7 @@ export default {
   usernameChanged,
   usernameSubmitted,
   followCountSet,
+  delegationsSet,
   reputationSet,
   errorOccurred,
   errorCleared

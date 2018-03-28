@@ -7,6 +7,7 @@ import Modal from '@atlaskit/modal-dialog'
 import Page from '@atlaskit/page'
 import HomePage from './pages/HomePage'
 import Dashboard from './pages/Dashboard'
+import Delegation from './pages/Delegation'
 import StarterNavigation from './components/StarterNavigation'
 import { selectors } from './state/rootReducer'
 import { uiOperations } from './state/ui'
@@ -44,7 +45,8 @@ class App extends Component {
           navigation={<StarterNavigation location={this.props.location} />}
         >
           <Route exact path='/' component={HomePage} />
-          <Route exact path='/dashboard' component={Dashboard} />
+          <Route path='/dashboard' component={Dashboard} />
+          <Route path='/delegation' component={Delegation} />
         </Page>
         <div>
           <FlagGroup onDismissed={this.onFlagDismissed}>
