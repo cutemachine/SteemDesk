@@ -8,12 +8,13 @@ const {
   reputationSet,
   followCountSet,
   delegationsSet,
+  dynamicGlobalPropertiesSet,
   errorOccurred,
   errorCleared
 } = actions
 
 // Thunks
-const usernameSubmitted = (name) => async (dispatch) => {
+const usernameSubmitted = (name) => async (dispatch, getState) => {
   dispatch(usernameStatusChanged('VALIDATING'))
   // account
   try {
@@ -38,7 +39,14 @@ const usernameSubmitted = (name) => async (dispatch) => {
     const delegations = await steem.api.getVestingDelegationsAsync(name, -1, 100)
     if (!delegations) { throw new Error('Sorry, could not get delegations for user.') }
     dispatch(delegationsSet(delegations))
-    console.log(delegations)
+  } catch (error) {
+    dispatch(errorOccurred(error.message))
+  }
+  // dynamic global propeties
+  try {
+    const dynamicGlobalProperties = await steem.api.getDynamicGlobalPropertiesAsync()
+    if (!dynamicGlobalProperties) { throw new Error('Sorry, could not get dynamic global properties.') }
+    dispatch(dynamicGlobalPropertiesSet(dynamicGlobalProperties))
   } catch (error) {
     dispatch(errorOccurred(error.message))
   }
@@ -51,6 +59,7 @@ export default {
   reputationSet,
   followCountSet,
   delegationsSet,
+  dynamicGlobalPropertiesSet,
   errorOccurred,
   errorCleared
 }

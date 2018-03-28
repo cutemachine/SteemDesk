@@ -29,6 +29,11 @@ const delegationsSet = (delegations) => ({
   delegations
 })
 
+const dynamicGlobalPropertiesSet = (dynamicGlobalProperties) => ({
+  type: types.DYNAMIC_GLOBAL_PROPERTIES_SET,
+  dynamicGlobalProperties
+})
+
 const errorOccurred = (errorMessage) => ({
   type: types.ERROR_OCCURRED,
   errorMessage
@@ -45,6 +50,7 @@ export default {
   usernameSubmitted,
   followCountSet,
   delegationsSet,
+  dynamicGlobalPropertiesSet,
   reputationSet,
   errorOccurred,
   errorCleared

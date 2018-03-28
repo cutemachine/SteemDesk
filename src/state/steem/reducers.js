@@ -7,7 +7,8 @@ const INITIAL_STATE = {
   errorMessage: '',
   reputation: '',
   followCount: { follower_count: '', following_count: '' },
-  delegations: []
+  delegations: [],
+  dynamicGlobalProperties: {}
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -34,6 +35,9 @@ export default (state = INITIAL_STATE, action) => {
 
     case types.DELEGATIONS_SET:
       return { ...state, delegations: action.delegations }
+
+    case types.DYNAMIC_GLOBAL_PROPERTIES_SET:
+      return { ...state, dynamicGlobalProperties: action.dynamicGlobalProperties }
 
     case types.ERROR_CLEARED:
     case types.ERROR_OCCURRED:
