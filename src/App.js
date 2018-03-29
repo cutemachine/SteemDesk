@@ -7,8 +7,9 @@ import Modal from '@atlaskit/modal-dialog'
 import Page from '@atlaskit/page'
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
-import Delegation from './pages/Delegation'
-import StarterNavigation from './components/StarterNavigation'
+import CurrentDelegations from './pages/delegation/CurrentDelegations'
+import DelegateSteemPower from './pages/delegation/DelegateSteemPower'
+import Navigation from './components/Navigation'
 import { selectors } from './state/rootReducer'
 import { uiOperations } from './state/ui'
 import '@atlaskit/css-reset'
@@ -42,11 +43,12 @@ class App extends Component {
       <div>
         <Page
           navigationWidth={this.context.navOpenState.width}
-          navigation={<StarterNavigation location={this.props.location} />}
+          navigation={<Navigation location={this.props.location} />}
         >
           <Route exact path='/' component={Home} />
           <Route path='/dashboard' component={Dashboard} />
-          <Route path='/delegation' component={Delegation} />
+          <Route path='/delegation/current' component={CurrentDelegations} />
+          <Route path='/delegation/delegate' component={DelegateSteemPower} />
         </Page>
         <div>
           <FlagGroup onDismissed={this.onFlagDismissed}>

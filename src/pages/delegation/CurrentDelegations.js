@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import ContentWrapper from '../components/ContentWrapper'
-import UsernameInput from '../components/UsernameInput'
 import Page, { Grid, GridColumn } from '@atlaskit/page'
 import PageHeader from '@atlaskit/page-header'
 import ErrorIcon from '@atlaskit/icon/glyph/error'
 import Banner from '@atlaskit/banner'
-import { steemSelectors } from '../state/steem'
-import { unitString2Number, vests2Steem } from '../common/utils'
+import { steemSelectors } from '../../state/steem'
+import { unitString2Number, vests2Steem } from '../../common/utils'
+import ContentWrapper from '../../components/ContentWrapper'
+import UsernameInput from '../../components/UsernameInput'
 
-class Delegation extends Component {
+class CurrentDelegations extends Component {
   static propTypes = {
     errorMessage: PropTypes.string
   }
@@ -73,4 +73,4 @@ const mapStateToProps = (state) => {
   return { delegations, errorMessage }
 }
 
-export default connect(mapStateToProps)(Delegation)
+export default connect(mapStateToProps)(CurrentDelegations)

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { steemOperations, steemSelectors } from '../state/steem'
 import Input from '@atlaskit/input'
 import FieldBase from '@atlaskit/field-base'
-import PersonIcon from '@atlaskit/icon/glyph/person'
+import MentionIcon from '@atlaskit/icon/glyph/mention'
 
 class UsernameInput extends Component {
   static propTypes = {
@@ -27,7 +27,7 @@ class UsernameInput extends Component {
 
     return (
       <FieldBase isInvalid={isInvalid} isLoading={isValidating}>
-        <PersonIcon primaryColor='gray' />&nbsp;
+        <MentionIcon primaryColor='gray' />&nbsp;
         <Input isEditing autoFocus
           onKeyUp={
             event => {
