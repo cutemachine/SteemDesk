@@ -4,6 +4,7 @@ import { formatReputation } from '../../common/utils'
 import uiActions from '../ui/actions'
 
 const {
+  accountHistorySet,
   usernameStatusChanged,
   usernameChanged,
   reputationSet,
@@ -18,8 +19,9 @@ const {
 const usernameSubmitted = (name) => async (dispatch, getState) => {
   dispatch(usernameStatusChanged('VALIDATING'))
   try {
-    let [accounts, followCount, delegations, dynamicGlobalProperties] = await Promise.all([
+    let [accounts, accountHistory, followCount, delegations, dynamicGlobalProperties] = await Promise.all([
       steem.api.getAccountsAsync([name]),
+      steem.api.getAccountHistoryAsync(name, -1, 5000),
       steem.api.getFollowCountAsync(name),
       steem.api.getVestingDelegationsAsync(name, -1, 100),
       steem.api.getDynamicGlobalPropertiesAsync()
@@ -28,6 +30,11 @@ const usernameSubmitted = (name) => async (dispatch, getState) => {
     dispatch(usernameStatusChanged('VALID'))
     dispatch(reputationSet(formatReputation(accounts[0].reputation)))
     dispatch(uiActions.addFlag(`Welcome ${name}`, 'SteemDesk loves you!'))
+
+    if (!accountHistory) { throw new Error('Sorry, no account history found.')}
+    accountHistory = accountHistory.reverse()
+    console.log('Account History', accountHistory)
+    dispatch(accountHistorySet(accountHistory))
 
     if (!followCount) { throw new Error('Sorry, could not get follow count for user.') }
     dispatch(followCountSet(followCount))
@@ -44,6 +51,7 @@ const usernameSubmitted = (name) => async (dispatch, getState) => {
 }
 
 export default {
+  accountHistorySet,
   usernameStatusChanged,
   usernameChanged,
   usernameSubmitted,

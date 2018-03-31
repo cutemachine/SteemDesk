@@ -1,5 +1,10 @@
 import types from './types'
 
+const accountHistorySet = (accountHistory) => ({
+  type: types.ACCOUNT_HISTORY_SET,
+  accountHistory
+})
+
 const usernameStatusChanged = (usernameStatus) => ({
   type: types.USERNAME_STATUS_CHANGED,
   usernameStatus
@@ -45,13 +50,14 @@ const errorCleared = () => ({
 })
 
 export default {
-  usernameStatusChanged,
-  usernameChanged,
-  usernameSubmitted,
-  followCountSet,
+  accountHistorySet,
   delegationsSet,
   dynamicGlobalPropertiesSet,
-  reputationSet,
+  errorCleared,
   errorOccurred,
-  errorCleared
+  followCountSet,
+  reputationSet,
+  usernameChanged,
+  usernameStatusChanged,
+  usernameSubmitted
 }

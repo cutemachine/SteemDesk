@@ -15,14 +15,15 @@ export default rootReducer
 // Selector names should start with 'select'.
 export const selectors = {
   // UI state
-  selectIsModalOpen: state => uiSelectors.selectIsModalOpen(state.ui),
   selectFlags: state => uiSelectors.selectFlags(state.ui),
+  selectIsModalOpen: state => uiSelectors.selectIsModalOpen(state.ui),
 
   // Steem state
-  selectUsername: state => steemSelectors.selectUsername(state.steem),
-  selectUsernameStatus: state => steemSelectors.selectUsernameStatus(state.steem),
-  selectReputation: state => steemSelectors.selectReputation(state.steem),
+  selectAccountHistory: state => steemSelectors.selectAccountHistory(state.steem),
   selectDelegations: state => steemSelectors.selectDelegations(state.steem),
+  selectErrorMessage: state => steemSelectors.selectErrorMessage(state.steem),
   selectFollowCount: state => steemSelectors.selectFollowCount(state.steem),
-  selectErrorMessage: state => steemSelectors.selectErrorMessage(state.steem)
+  selectReputation: state => steemSelectors.selectReputation(state.steem),
+  selectUsername: state => steemSelectors.selectUsername(state.steem),
+  selectUsernameStatus: state => steemSelectors.selectUsernameStatus(state.steem)
 }
