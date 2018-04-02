@@ -13,9 +13,9 @@ export const unitString2Number = (stringWithUnit) => Number(stringWithUnit.split
 // vesting_shares is a string with the unit ' VESTS' appended
 // delegateVestingShares only accepts 6 decimal digits, therefore we use toFixed(6) for return
 export const vests2Steem = (vestingShares, dynamicGlobalProperties) => {
-  const { totalVestingFundSteem, totalVestingShares } = dynamicGlobalProperties
-  const totalVestingFundSteemNumber = unitString2Number(totalVestingFundSteem)
-  const totalVestingSharesNumber = unitString2Number(totalVestingShares)
+  const { total_vesting_fund_steem, total_vesting_shares } = dynamicGlobalProperties
+  const totalVestingFundSteemNumber = unitString2Number(total_vesting_fund_steem)
+  const totalVestingSharesNumber = unitString2Number(total_vesting_shares)
   const vestingSharesNumber = unitString2Number(vestingShares)
 
   return (totalVestingFundSteemNumber * (vestingSharesNumber / totalVestingSharesNumber)).toFixed(6)

@@ -20,12 +20,11 @@ class CurrentDelegations extends Component {
 
     let tableItems = this.props.delegations.map((item, index) => {
       return (
-        <tr>
+        <tr key={`${item.delegator}_${item.delegatee}`}>
           <td>{item.delegator}</td>
           <td>{item.delegatee}</td>
-          <td>{unitString2Number(item.vesting_shares)} VESTS</td>
-          {/* <td>{vests2Steem(item.vesting_shares, state.user.dynamicGlobalProperties)} SP</td> */}
-          <td>ToDo</td>
+          <td>{item.vesting_shares}</td>
+          <td>{item.vesting_shares_sp}</td>
           <td>{item.min_delegation_time}</td>
         </tr>
       )

@@ -2,6 +2,7 @@ import actions from './actions'
 import steem from 'steem'
 import { formatReputation } from '../../common/utils'
 import uiActions from '../ui/actions'
+import { unitString2Number, vests2Steem } from '../../common/utils'
 
 const {
   accountHistorySet,
@@ -33,17 +34,24 @@ const usernameSubmitted = (name) => async (dispatch, getState) => {
 
     if (!accountHistory) { throw new Error('Sorry, no account history found.')}
     accountHistory = accountHistory.reverse()
-    console.log('Account History', accountHistory)
     dispatch(accountHistorySet(accountHistory))
 
     if (!followCount) { throw new Error('Sorry, could not get follow count for user.') }
     dispatch(followCountSet(followCount))
 
-    if (!delegations) { throw new Error('Sorry, could not get delegations for user.') }
-    dispatch(delegationsSet(delegations))
-
     if (!dynamicGlobalProperties) { throw new Error('Sorry, could not get dynamic global properties.') }
     dispatch(dynamicGlobalPropertiesSet(dynamicGlobalProperties))
+
+    if (!delegations) { throw new Error('Sorry, could not get delegations for user.') }
+    dispatch(delegationsSet(delegations.map((item) => {
+      return {
+        delegator: item.delegator,
+        delegatee: item.delegatee,
+        vesting_shares: item.vesting_shares,
+        vesting_shares_sp: `${Number.parseFloat(vests2Steem(item.vesting_shares, dynamicGlobalProperties)).toFixed(0)} SP`,
+        min_delegation_time: item.min_delegation_time
+      }
+    })))
   } catch (error) {
     dispatch(usernameStatusChanged('INVALID'))
     dispatch(errorOccurred(error.message))
