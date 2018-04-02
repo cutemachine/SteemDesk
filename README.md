@@ -12,23 +12,31 @@ All tools for the Steem blockchain on one desk
 - [Redux—Predictable state container for JavaScript apps](https://redux.js.org/)
 
 
-## Crypto Prices
+## Roadmap
 
-Crypto prices are provided by [CryptoCompare](https://www.cryptocompare.com/).
-
-
-## Build
-
-You can build the project with the `parcel` command. You can also use the NPM script set up in the `package.json` file.
-
-    yarn build
+- Show APR for current delegations
+- Show APR for transfers to Steem
+- Show lifetime author rewards
+- Show lifetime curation rewards
+- Show upvotes in list (filterable for time frame, etc.)
+- Show followers in list (filterable for time frame, reputation, etc.)
 
 
-## SteemDesk On The Interwebs
+## Getting Started
 
-You can find a running version on [SteemDesk.com](https://steemdesk.com).
+Building the app locally on your computer should be straightforward. Just clone the app. Then install the dependencies with `yarn`. When the installation has finished, you can run the app with `yarn start`. These are the steps in more detail:
 
-[Last build](http://epic-meninsky-98f230.netlify.com)
+    git clone https://github.com/cutemachine/SteemDesk.git
+    cd SteemDesk
+    yarn
+    yarn start
+
+
+## Demo
+
+[Check out the live version of SteemDesk.](http://epic-meninsky-98f230.netlify.com)
+
+(The app will be available on SteemDesk.com soon.)
 
 
 ## How To Contribute
