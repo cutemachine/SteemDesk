@@ -33,9 +33,11 @@
     "@atlaskit/navigation": "latest",
     "@atlaskit/page": "latest",
     "@atlaskit/page-header": "^2.4.1",
+    "@atlaskit/single-select": "^3.3.4",
     "@atlaskit/theme": "latest",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
+    "formik": "^0.11.11",
     "history": "^4.7.2",
     "lodash.has": "^4.5.2",
     "prop-types": "^15.6.1",
@@ -47,7 +49,8 @@
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "steem": "^0.7.1"
+    "steem": "^0.7.1",
+    "yup": "^0.24.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",

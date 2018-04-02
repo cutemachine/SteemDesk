@@ -4,6 +4,6 @@ export default {
   selectErrorMessage: state => state.steem.errorMessage,
   selectFollowCount: state => state.steem.followCount,
   selectReputation: state => state.steem.reputation,
-  selectUsername: state => state.steem,
+  selectUsername: state => state.steem.username,
   selectUsernameStatus: state => state.steem.usernameStatus
 }

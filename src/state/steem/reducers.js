@@ -2,7 +2,7 @@ import types from './types'
 
 const INITIAL_STATE = {
   accountHistory: [],
-  username: 'cutemachine',
+  username: '',
   // VALID, INVALID, VALIDATING, UNCHECKED
   usernameStatus: 'UNCHECKED',
   errorMessage: '',
