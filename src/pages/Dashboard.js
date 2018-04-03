@@ -1,17 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import ContentWrapper from '../components/ContentWrapper'
-import UsernameInput from '../components/UsernameInput'
 import Page, { Grid, GridColumn } from '@atlaskit/page'
-import PageHeader from '@atlaskit/page-header'
 import ErrorIcon from '@atlaskit/icon/glyph/error'
 import Banner from '@atlaskit/banner'
 import { steemSelectors } from '../state/steem'
-
-const actionsContent = (
-  <UsernameInput />
-)
+import PageHeaderWithUserinput from '../components/PageHeaderWithUserinput'
+import ContentWrapper from '../components/ContentWrapper'
 
 class Dashboard extends Component {
   static propTypes = {
@@ -29,14 +24,8 @@ class Dashboard extends Component {
               ? <Banner icon={Icon} isOpen appearance='error'>{this.props.errorMessage}</Banner>
               : null
           }
-          <PageHeader
-            breadcrumbs={null}
-            actions={actionsContent}
-            bottomBar={null}
-          >
-            Dashboard
-          </PageHeader>
-          <Grid layout="fluid">
+          <PageHeaderWithUserinput title='Dashboard' />
+          <Grid layout='fluid'>
             <GridColumn medium={4}>
               <h3>Reputation</h3>
               <p>{this.props.reputation}</p>
