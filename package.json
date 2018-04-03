@@ -49,6 +49,7 @@
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
     "steem": "^0.7.1",
     "yup": "^0.24.1"
   },
