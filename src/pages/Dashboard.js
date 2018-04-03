@@ -5,7 +5,7 @@ import Page, { Grid, GridColumn } from '@atlaskit/page'
 import ErrorIcon from '@atlaskit/icon/glyph/error'
 import Banner from '@atlaskit/banner'
 import { steemSelectors } from '../state/steem'
-import PageHeaderWithUserinput from '../components/PageHeaderWithUserinput'
+import PageHeaderWithUserInput from '../components/PageHeaderWithUserInput'
 import ContentWrapper from '../components/ContentWrapper'
 
 class Dashboard extends Component {
@@ -24,7 +24,7 @@ class Dashboard extends Component {
               ? <Banner icon={Icon} isOpen appearance='error'>{this.props.errorMessage}</Banner>
               : null
           }
-          <PageHeaderWithUserinput title='Dashboard' />
+          <PageHeaderWithUserInput title='Dashboard' />
           <Grid layout='fluid'>
             <GridColumn medium={4}>
               <h3>Reputation</h3>

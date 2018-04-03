@@ -1,15 +1,26 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { steemSelectors } from '../state/steem'
 import Page from '@atlaskit/page'
+import Banner from '@atlaskit/banner'
+import ErrorIcon from '@atlaskit/icon/glyph/error'
 import MainSection from '../components/MainSection'
 import ContentWrapper from '../components/ContentWrapper'
-import PageHeaderWithUserinput from '../components/PageHeaderWithUserinput'
+import PageHeaderWithUserInput from '../components/PageHeaderWithUserInput'
 
 class Home extends Component {
   render () {
+    const Icon = <ErrorIcon label='Error icon' secondaryColor='inherit' />
+
     return (
       <ContentWrapper>
         <Page>
-          <PageHeaderWithUserinput title='SteemDesk' />
+          { // Show error banner only when there is an error set
+            (this.props.errorMessage !== '')
+              ? <Banner icon={Icon} isOpen appearance='error'>{this.props.errorMessage}</Banner>
+              : null
+          }
+          <PageHeaderWithUserInput title='SteemDesk' />
           <MainSection />
         </Page>
       </ContentWrapper>
@@ -17,4 +28,10 @@ class Home extends Component {
   }
 }
 
-export default Home
+const mapStateToProps = (state) => {
+  const errorMessage = steemSelectors.selectErrorMessage(state)
+
+  return { errorMessage }
+}
+
+export default connect(mapStateToProps)(Home)

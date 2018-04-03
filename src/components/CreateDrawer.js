@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-
 import { AkNavigationItemGroup, AkNavigationItem } from '@atlaskit/navigation'
-
 import BitbucketBranchesIcon from '@atlaskit/icon/glyph/bitbucket/branches'
 import EmojiNatureIcon from '@atlaskit/icon/glyph/emoji/nature'
 

@@ -29,10 +29,11 @@ const usernameSubmitted = (name) => async (dispatch, getState) => {
     ])
     if (!accounts[0]) { throw new Error('Sorry, no account found. Minimum 3 chars, no uppercase.') }
     dispatch(usernameStatusChanged('VALID'))
+    dispatch(usernameChanged(name))
     dispatch(reputationSet(formatReputation(accounts[0].reputation)))
     dispatch(uiActions.addFlag(`Welcome ${name}`, 'SteemDesk loves you!'))
 
-    if (!accountHistory) { throw new Error('Sorry, no account history found.')}
+    if (!accountHistory) { throw new Error('Sorry, no account history found.') }
     accountHistory = accountHistory.reverse()
     dispatch(accountHistorySet(accountHistory))
 
@@ -54,7 +55,7 @@ const usernameSubmitted = (name) => async (dispatch, getState) => {
     })))
   } catch (error) {
     dispatch(usernameStatusChanged('INVALID'))
-    dispatch(errorOccurred(error.message))
+    throw new Error('User is invalid.')
   }
 }
 

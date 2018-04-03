@@ -1,12 +1,12 @@
 import React from 'react'
 import PageHeader from '@atlaskit/page-header'
-import UsernameInput from './UsernameInput'
+import UserInput from './UserInput'
 
 const actionsContent = (
-  <UsernameInput />
+  <UserInput />
 )
 
-const PageHeaderWithUserinput = ({title}) => (
+const PageHeaderWithUserInput = ({title}) => (
   <PageHeader
     breadcrumbs={null}
     actions={actionsContent}
@@ -16,4 +16,4 @@ const PageHeaderWithUserinput = ({title}) => (
   </PageHeader>
 )
 
-export default PageHeaderWithUserinput
+export default PageHeaderWithUserInput

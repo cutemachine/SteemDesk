@@ -6,7 +6,7 @@ import ErrorIcon from '@atlaskit/icon/glyph/error'
 import Banner from '@atlaskit/banner'
 import { steemSelectors } from '../../state/steem'
 import ContentWrapper from '../../components/ContentWrapper'
-import PageHeaderWithUserinput from '../../components/PageHeaderWithUserinput'
+import PageHeaderWithUserInput from '../../components/PageHeaderWithUserInput'
 
 class CurrentDelegations extends Component {
   static propTypes = {
@@ -36,7 +36,7 @@ class CurrentDelegations extends Component {
               ? <Banner icon={Icon} isOpen appearance='error'>{this.props.errorMessage}</Banner>
               : null
           }
-          <PageHeaderWithUserinput title='Current Delegations' />
+          <PageHeaderWithUserInput title='Current Delegations' />
           <table>
             <thead>
               <tr>

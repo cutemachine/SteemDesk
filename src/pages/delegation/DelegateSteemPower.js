@@ -13,7 +13,7 @@ import SingleSelect from '@atlaskit/single-select'
 import styled from 'styled-components'
 import { steemSelectors } from '../../state/steem'
 import ContentWrapper from '../../components/ContentWrapper'
-import PageHeaderWithUserinput from '../../components/PageHeaderWithUserinput'
+import PageHeaderWithUserInput from '../../components/PageHeaderWithUserInput'
 
 const delegateSteemPower = (values) => {
   const delegationURL = `https://steemconnect.com/sign/delegate-vesting-shares?delegator=${values.delegator}&delegatee=${values.delegatee}&vesting_shares=${values.amount} ${values.unit}`
@@ -117,7 +117,7 @@ class DelegateSteemPower extends Component {
               ? <Banner icon={Icon} isOpen appearance='error'>{this.props.errorMessage}</Banner>
               : null
           }
-          <PageHeaderWithUserinput title='Delegate Steem Power' />
+          <PageHeaderWithUserInput title='Delegate Steem Power' />
           <DelegationFormik delegator={this.props.username} />
         </Page>
       </ContentWrapper>
