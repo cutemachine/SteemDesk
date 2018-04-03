@@ -6,6 +6,7 @@ import Flag, { FlagGroup } from '@atlaskit/flag'
 import Modal from '@atlaskit/modal-dialog'
 import Page from '@atlaskit/page'
 import Home from './pages/Home'
+import Activity from './pages/Activity'
 import Dashboard from './pages/Dashboard'
 import CurrentDelegations from './pages/delegation/CurrentDelegations'
 import DelegateSteemPower from './pages/delegation/DelegateSteemPower'
@@ -47,6 +48,7 @@ class App extends Component {
         >
           <Route exact path='/' component={Home} />
           <Route path='/dashboard' component={Dashboard} />
+          <Route path='/activity' component={Activity} />
           <Route path='/delegation/current' component={CurrentDelegations} />
           <Route path='/delegation/delegate' component={DelegateSteemPower} />
         </Page>
