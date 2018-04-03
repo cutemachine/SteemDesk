@@ -28,8 +28,8 @@ const usernameSubmitted = (name) => async (dispatch, getState) => {
       steem.api.getDynamicGlobalPropertiesAsync()
     ])
     if (!accounts[0]) { throw new Error('Sorry, no account found. Minimum 3 chars, no uppercase.') }
-    dispatch(usernameStatusChanged('VALID'))
     dispatch(usernameChanged(name))
+    dispatch(usernameStatusChanged('VALID'))
     dispatch(reputationSet(formatReputation(accounts[0].reputation)))
     dispatch(uiActions.addFlag(`Welcome ${name}`, 'SteemDesk loves you!'))
 

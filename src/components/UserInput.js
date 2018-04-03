@@ -9,6 +9,7 @@ import Yup from 'yup'
 import Input from '@atlaskit/input'
 import FieldBase from '@atlaskit/field-base'
 import MentionIcon from '@atlaskit/icon/glyph/mention'
+import CheckIcon from '@atlaskit/icon/glyph/check'
 
 const UserInputForm = ({values, errors, touched, isSubmitting, handleChange, setFieldValue, ...rest}) => (
   <Form>
@@ -19,7 +20,8 @@ const UserInputForm = ({values, errors, touched, isSubmitting, handleChange, set
       invalidMessage={touched.user && errors.user}
     >
       <MentionIcon primaryColor='gray' />&nbsp;
-      <Input isEditing type='text' name='user' placeholder='username …' value={values.user} onChange={handleChange} />
+      <Input isEditing type='text' name='user' placeholder='username …' value={values.user} onChange={handleChange} />&nbsp;
+      { rest.usernameStatus === 'VALID' && <CheckIcon primaryColor='gray' /> }
     </FieldBase>
   </Form>
 )
@@ -47,7 +49,6 @@ const UserInput = withFormik({
 
 // export default UserInput
 const mapDispatchToProps = {
-  usernameChanged: steemOperations.usernameChanged,
   usernameSubmitted: steemOperations.usernameSubmitted
 }
 
