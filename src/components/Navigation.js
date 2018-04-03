@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Navigation, {
@@ -18,7 +18,7 @@ import CreateDrawer from '../components/CreateDrawer'
 import SteemDeskLogo from '../images/SteemDesk.png'
 
 export default class NavigationPanel extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = {
