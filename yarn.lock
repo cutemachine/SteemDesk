@@ -49,6 +49,17 @@
     babel-runtime "^6.26.0"
     styled-components "1.4.6 - 3"
 
+"@atlaskit/checkbox@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/@atlaskit/checkbox/-/checkbox-1.4.0.tgz#5e398406b745f9ba70b32b7e9dea99a4baad9784"
+  dependencies:
+    "@atlaskit/button" "^6.6.2"
+    "@atlaskit/icon" "^10.13.0"
+    "@atlaskit/theme" "^2.4.1"
+    babel-runtime "^6.26.0"
+    prop-types "^15.5.10"
+    styled-components "1.4.6 - 3"
+
 "@atlaskit/css-reset@latest":
   version "1.2.3"
   resolved "https://registry.npmjs.org/@atlaskit/css-reset/-/css-reset-1.2.3.tgz#001690620e4c1602b0cd12951ae016add121678c"
@@ -117,7 +128,7 @@
     styled-components "1.4.6 - 3"
     uuid "^3.1.0"
 
-"@atlaskit/icon@^10.12.1", "@atlaskit/icon@latest":
+"@atlaskit/icon@^10.12.1", "@atlaskit/icon@^10.13.0", "@atlaskit/icon@latest":
   version "10.13.0"
   resolved "https://registry.npmjs.org/@atlaskit/icon/-/icon-10.13.0.tgz#d662c212ced45aea03644e5375bebf8c52dc4efa"
   dependencies:

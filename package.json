@@ -21,6 +21,7 @@
     "@atlaskit/avatar": "latest",
     "@atlaskit/banner": "^4.2.2",
     "@atlaskit/button": "latest",
+    "@atlaskit/checkbox": "^1.4.0",
     "@atlaskit/css-reset": "latest",
     "@atlaskit/dropdown-menu": "latest",
     "@atlaskit/field-base": "^8.2.1",
