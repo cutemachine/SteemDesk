@@ -5,6 +5,11 @@ const accountHistorySet = (accountHistory) => ({
   accountHistory
 })
 
+const accountHistoryStatusSet = (accountHistoryStatus) => ({
+  type: types.ACCOUNT_HISTORY_STATUS_SET,
+  accountHistoryStatus
+})
+
 const usernameStatusChanged = (usernameStatus) => ({
   type: types.USERNAME_STATUS_CHANGED,
   usernameStatus
@@ -51,6 +56,7 @@ const errorCleared = () => ({
 
 export default {
   accountHistorySet,
+  accountHistoryStatusSet,
   delegationsSet,
   dynamicGlobalPropertiesSet,
   errorCleared,
