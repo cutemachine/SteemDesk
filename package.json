@@ -34,6 +34,7 @@
     "@atlaskit/page": "latest",
     "@atlaskit/page-header": "^2.4.1",
     "@atlaskit/single-select": "^3.3.4",
+    "@atlaskit/spinner": "^4.2.1",
     "@atlaskit/theme": "latest",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
