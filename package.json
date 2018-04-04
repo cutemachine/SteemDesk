@@ -40,6 +40,7 @@
     "formik": "^0.11.11",
     "history": "^4.7.2",
     "lodash.has": "^4.5.2",
+    "lodash.last": "^3.0.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
