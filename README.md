@@ -14,6 +14,7 @@ All tools for the Steem blockchain on one desk
 
 ## Roadmap
 
+- Improve display of activity items by replacing table with dedicated components
 - Show APR for current delegations
 - Show APR for transfers to Steem
 - Show lifetime author rewards
@@ -34,9 +35,7 @@ Building the app locally on your computer should be straightforward. Just clone 
 
 ## Demo
 
-[Check out the live version of SteemDesk.](http://epic-meninsky-98f230.netlify.com)
-
-(The app will be available on SteemDesk.com soon.)
+[Check out the live version of SteemDesk.](https://www.steemdesk.com)
 
 
 ## How To Contribute
