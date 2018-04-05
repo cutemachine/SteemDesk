@@ -5,10 +5,9 @@ const showModal = isOpen => ({
   payload: isOpen
 })
 
-let nextFlagId = 0
-const addFlag = (title, description) => ({
+const addFlag = (id, title, description) => ({
   type: types.ADD_FLAG,
-  id: ++nextFlagId,
+  id,
   title,
   description
 })

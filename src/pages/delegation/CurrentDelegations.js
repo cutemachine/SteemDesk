@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import Page, { Grid, GridColumn } from '@atlaskit/page'
-import PageHeader from '@atlaskit/page-header'
+import Page from '@atlaskit/page'
 import ErrorIcon from '@atlaskit/icon/glyph/error'
 import Banner from '@atlaskit/banner'
 import { steemSelectors } from '../../state/steem'
-import { unitString2Number, vests2Steem } from '../../common/utils'
 import ContentWrapper from '../../components/ContentWrapper'
-import UsernameInput from '../../components/UsernameInput'
+import PageHeaderWithUserInput from '../../components/PageHeaderWithUserInput'
 
 class CurrentDelegations extends Component {
   static propTypes = {
@@ -38,13 +36,7 @@ class CurrentDelegations extends Component {
               ? <Banner icon={Icon} isOpen appearance='error'>{this.props.errorMessage}</Banner>
               : null
           }
-          <PageHeader
-            breadcrumbs={null}
-            actions={null}
-            bottomBar={null}
-          >
-            Current Delegations
-          </PageHeader>
+          <PageHeaderWithUserInput title='Current Delegations' />
           <table>
             <thead>
               <tr>

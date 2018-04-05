@@ -2,6 +2,8 @@ import types from './types'
 
 const INITIAL_STATE = {
   accountHistory: [],
+  // EMPTY, LOADED, LOADED_COMPLETELY, LOADING
+  accountHistoryStatus: 'EMPTY',
   username: '',
   // VALID, INVALID, VALIDATING, UNCHECKED
   usernameStatus: 'UNCHECKED',
@@ -16,6 +18,9 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case types.ACCOUNT_HISTORY_SET:
       return { ...state, accountHistory: action.accountHistory }
+
+    case types.ACCOUNT_HISTORY_STATUS_SET:
+      return { ...state, accountHistoryStatus: action.accountHistoryStatus }
 
     case types.USERNAME_STATUS_CHANGED:
       return { ...state, usernameStatus: action.usernameStatus }

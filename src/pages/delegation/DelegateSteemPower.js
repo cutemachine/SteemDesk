@@ -2,13 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Page, { Grid, GridColumn } from '@atlaskit/page'
-import PageHeader from '@atlaskit/page-header'
 import ErrorIcon from '@atlaskit/icon/glyph/error'
 import Banner from '@atlaskit/banner'
-import { steemSelectors } from '../../state/steem'
-import { unitString2Number, vests2Steem } from '../../common/utils'
-import ContentWrapper from '../../components/ContentWrapper'
-import UsernameInput from '../../components/UsernameInput'
 import { withFormik, Form, Field } from 'formik'
 import Yup from 'yup'
 import Input from '@atlaskit/input'
@@ -16,6 +11,9 @@ import FieldBase, { Label } from '@atlaskit/field-base'
 import Button from '@atlaskit/button'
 import SingleSelect from '@atlaskit/single-select'
 import styled from 'styled-components'
+import { steemSelectors } from '../../state/steem'
+import ContentWrapper from '../../components/ContentWrapper'
+import PageHeaderWithUserInput from '../../components/PageHeaderWithUserInput'
 
 const delegateSteemPower = (values) => {
   const delegationURL = `https://steemconnect.com/sign/delegate-vesting-shares?delegator=${values.delegator}&delegatee=${values.delegatee}&vesting_shares=${values.amount} ${values.unit}`
@@ -119,13 +117,7 @@ class DelegateSteemPower extends Component {
               ? <Banner icon={Icon} isOpen appearance='error'>{this.props.errorMessage}</Banner>
               : null
           }
-          <PageHeader
-            breadcrumbs={null}
-            actions={null}
-            bottomBar={null}
-          >
-            Delegate Steem Power
-          </PageHeader>
+          <PageHeaderWithUserInput title='Delegate Steem Power' />
           <DelegationFormik delegator={this.props.username} />
         </Page>
       </ContentWrapper>

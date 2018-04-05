@@ -49,6 +49,17 @@
     babel-runtime "^6.26.0"
     styled-components "1.4.6 - 3"
 
+"@atlaskit/checkbox@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/@atlaskit/checkbox/-/checkbox-1.4.0.tgz#5e398406b745f9ba70b32b7e9dea99a4baad9784"
+  dependencies:
+    "@atlaskit/button" "^6.6.2"
+    "@atlaskit/icon" "^10.13.0"
+    "@atlaskit/theme" "^2.4.1"
+    babel-runtime "^6.26.0"
+    prop-types "^15.5.10"
+    styled-components "1.4.6 - 3"
+
 "@atlaskit/css-reset@latest":
   version "1.2.3"
   resolved "https://registry.npmjs.org/@atlaskit/css-reset/-/css-reset-1.2.3.tgz#001690620e4c1602b0cd12951ae016add121678c"
@@ -117,7 +128,7 @@
     styled-components "1.4.6 - 3"
     uuid "^3.1.0"
 
-"@atlaskit/icon@^10.12.1", "@atlaskit/icon@latest":
+"@atlaskit/icon@^10.12.1", "@atlaskit/icon@^10.13.0", "@atlaskit/icon@latest":
   version "10.13.0"
   resolved "https://registry.npmjs.org/@atlaskit/icon/-/icon-10.13.0.tgz#d662c212ced45aea03644e5375bebf8c52dc4efa"
   dependencies:
@@ -3401,9 +3412,17 @@ lodash.isequal@4.5.0:
   version "4.5.0"
   resolved "https://registry.npmjs.org/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
 
+lodash.last@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/lodash.last/-/lodash.last-3.0.0.tgz#242f663112dd4c6e63728c60a3c909d1bdadbd4c"
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npmjs.org/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
+
+lodash.snakecase@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmjs.org/lodash.snakecase/-/lodash.snakecase-4.1.1.tgz#39d714a35357147837aefd64b5dcbb16becd8f8d"
 
 lodash.topath@4.5.2:
   version "4.5.2"
@@ -4696,6 +4715,10 @@ require-uncached@^1.0.3:
   dependencies:
     caller-path "^0.1.0"
     resolve-from "^1.0.0"
+
+reselect@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
 
 resolve-from@^1.0.0:
   version "1.0.1"

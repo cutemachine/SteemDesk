@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Navigation, {
@@ -10,6 +10,7 @@ import Navigation, {
 import HomeFilledIcon from '@atlaskit/icon/glyph/home-filled'
 import DashboardIcon from '@atlaskit/icon/glyph/dashboard'
 import CreateIcon from '@atlaskit/icon/glyph/add'
+import PageIcon from '@atlaskit/icon/glyph/page'
 import ArrowleftIcon from '@atlaskit/icon/glyph/arrow-left'
 import EmojiNatureIcon from '@atlaskit/icon/glyph/emoji/nature'
 import FollowersIcon from '@atlaskit/icon/glyph/followers'
@@ -18,7 +19,7 @@ import CreateDrawer from '../components/CreateDrawer'
 import SteemDeskLogo from '../images/SteemDesk.png'
 
 export default class NavigationPanel extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = {
@@ -28,6 +29,11 @@ export default class NavigationPanel extends Component {
             title: 'Home',
             url: '/',
             Icon: HomeFilledIcon
+          },
+          {
+            title: 'Activity',
+            url: '/activity',
+            Icon: PageIcon
           },
           {
             title: 'Dashboard',
@@ -47,12 +53,12 @@ export default class NavigationPanel extends Component {
                 title: 'Delegate SP',
                 url: '/delegation/delegate',
                 Icon: FollowersIcon
-              },
-            ],
-          },
-        ],
-      ],
-    };
+              }
+            ]
+          }
+        ]
+      ]
+    }
   }
 
   static propTypes = {
@@ -68,33 +74,33 @@ export default class NavigationPanel extends Component {
   }
 
   stackPush = (item) => {
-    const stack = [...this.state.stack, item];
-    this.setState({ stack });
-  };
+    const stack = [...this.state.stack, item]
+    this.setState({ stack })
+  }
 
   stackPop = () => {
     if (this.state.stack.length > 1) {
-      const stack = this.state.stack.slice(0, this.state.stack.length - 1);
-      this.setState({ stack });
+      const stack = this.state.stack.slice(0, this.state.stack.length - 1)
+      this.setState({ stack })
     }
-  };
+  }
 
-  renderBackButton() {
-    return <AkNavigationItem onClick={this.stackPop} text="Back" key="Back" />;
+  renderBackButton () {
+    return <AkNavigationItem onClick={this.stackPop} text='Back' key='Back' />
   }
 
   renderHeader = () => {
-    const items = [];
+    const items = []
 
     if (this.state.stack.length > 1) {
-      items.push(this.renderBackButton());
+      items.push(this.renderBackButton())
     }
 
-    return items;
-  };
+    return items
+  }
 
   renderItem = (item) => {
-    const onClick = item.children && (() => this.stackPush(item.children));
+    const onClick = item.children && (() => this.stackPush(item.children))
     if (has(item, 'children')) {
       return (
         <AkNavigationItem
@@ -120,7 +126,7 @@ export default class NavigationPanel extends Component {
   renderStack = () =>
     this.state.stack.map(page => page.map(item => this.renderItem(item)));
 
-  render() {
+  render () {
     const backIcon = <ArrowleftIcon label='Back icon' size='medium' />
     const globalPrimaryIcon = <EmojiNatureIcon label='Atlassian icon' size='xlarge' />
 
@@ -132,23 +138,22 @@ export default class NavigationPanel extends Component {
         onResize={this.props.onNavResize}
         // containerHeaderComponent={this.renderHeader}
         containerHeaderComponent={() => (
-        <div>
-          <AkContainerTitle
-            href='/'
-            icon={
-              <img alt='SteemDesk logo' src={SteemDeskLogo} />
-            }
-            text='SteemDesk'
-          />
-          {
-            (this.state.stack.length > 1)
-            ? <AkNavigationItem
+          <div>
+            <AkContainerTitle
+              href='/'
+              icon={
+                <img alt='SteemDesk logo' src={SteemDeskLogo} />
+              }
+              text='SteemDesk'
+            />
+            { (this.state.stack.length > 1)
+              ? <AkNavigationItem
                 icon={<ArrowleftIcon label='Back icon' size='medium' />}
-                onClick={this.stackPop} text="Back" key="Back"
+                onClick={this.stackPop} text='Back' key='Back'
               />
-            : null
-          }
-        </div>
+              : null
+            }
+          </div>
         )}
         globalPrimaryIcon={globalPrimaryIcon}
         globalPrimaryItemHref='/'
@@ -173,7 +178,6 @@ export default class NavigationPanel extends Component {
           stack={this.renderStack()}
         />
       </Navigation>
-    );
+    )
   }
 }
-
