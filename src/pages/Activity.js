@@ -171,11 +171,18 @@ class Activity extends Component {
     let tableItems = this.props.accountHistory.map((item, index) => {
       const sequenceID = item[0]
       const type = item[1].op[0]
+      const content = JSON.stringify(item[1].op[1])
+      const timestamp = item[1].timestamp
+      if (type === 'vote') {
+        console.log(item)
+      }
       if (this.state.filter[type]) {
         return (
           <tr key={sequenceID}>
             <td>{sequenceID}</td>
             <td>{type}</td>
+            <td>{content}</td>
+            <td>{timestamp}</td>
           </tr>
         )
       } else {
@@ -209,8 +216,10 @@ class Activity extends Component {
           <table>
             <thead>
               <tr>
-                <th>Sequence ID</th>
+                <th>ID</th>
                 <th>Type</th>
+                <th>Content</th>
+                <th>Timestamp</th>
               </tr>
             </thead>
             <tbody>
