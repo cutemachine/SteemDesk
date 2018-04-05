@@ -48,6 +48,8 @@ const usernameSubmitted = (name) => async (dispatch, getState) => {
   dispatch(usernameStatusChanged('VALIDATING'))
   dispatch(accountHistoryStatusSet('LOADING'))
   try {
+    // Use this server, as it allows to grab the whole account history from blockchain
+    steem.api.setOptions({ url: 'wss://rpc.buildteam.io' })
     let [accounts, accountHistory, followCount, delegations, dynamicGlobalProperties] = await Promise.all([
       steem.api.getAccountsAsync([name]),
       steem.api.getAccountHistoryAsync(name, -1, 100),
