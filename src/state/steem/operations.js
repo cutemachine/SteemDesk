@@ -1,7 +1,7 @@
 import actions from './actions'
 import steem from 'steem'
 import last from 'lodash.last'
-import uiActions from '../ui/actions'
+import { uiOperations } from '../ui'
 import { formatReputation, vests2Steem } from '../../common/utils'
 
 const {
@@ -59,7 +59,7 @@ const usernameSubmitted = (name) => async (dispatch, getState) => {
     dispatch(usernameChanged(name))
     dispatch(usernameStatusChanged('VALID'))
     dispatch(reputationSet(formatReputation(accounts[0].reputation)))
-    dispatch(uiActions.addFlag(`Welcome ${name}`, 'SteemDesk loves you!'))
+    dispatch(uiOperations.showFlag(`Welcome ${name}`, 'SteemDesk loves you!', 4000))
 
     if (!accountHistory) { throw new Error('Sorry, no account history found.') }
     accountHistory = accountHistory.reverse()
