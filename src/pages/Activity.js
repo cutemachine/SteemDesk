@@ -10,6 +10,11 @@ import ContentWrapper from '../components/ContentWrapper'
 import PageHeaderWithUserInput from '../components/PageHeaderWithUserInput'
 import { steemOperations, steemSelectors } from '../state/steem'
 import snakeCase from 'lodash.snakecase'
+import styled from 'styled-components'
+
+const Table = styled.table`
+  margin: 2em 0;
+`
 
 const typeLabels = [
   'Author Reward',
@@ -173,9 +178,6 @@ class Activity extends Component {
       const type = item[1].op[0]
       const content = JSON.stringify(item[1].op[1])
       const timestamp = item[1].timestamp
-      if (type === 'vote') {
-        console.log(item)
-      }
       if (this.state.filter[type]) {
         return (
           <tr key={sequenceID}>
@@ -200,6 +202,19 @@ class Activity extends Component {
           }
           <PageHeaderWithUserInput title='Activity' />
           { this.renderFilter() }
+          <Table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Content</th>
+                <th>Timestamp</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tableItems}
+            </tbody>
+          </Table>
           <Button
             isDisabled={this.props.usernameStatus !== 'VALID' || this.props.accountHistoryStatus === 'LOADED_COMPLETELY'}
             appearance='primary'
@@ -213,19 +228,7 @@ class Activity extends Component {
           >
             Load more
           </Button>
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Type</th>
-                <th>Content</th>
-                <th>Timestamp</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tableItems}
-            </tbody>
-          </table>
+          { this.props.accountHistoryStatus === 'LOADED_COMPLETELY' && <span>&nbsp;&nbsp;All data loaded.</span> }
         </Page>
       </ContentWrapper>
     )
