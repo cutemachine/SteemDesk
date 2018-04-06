@@ -9,40 +9,13 @@ import { CheckboxStateless } from '@atlaskit/checkbox'
 import ContentWrapper from '../components/ContentWrapper'
 import PageHeaderWithUserInput from '../components/PageHeaderWithUserInput'
 import { steemOperations, steemSelectors } from '../state/steem'
-import snakeCase from 'lodash.snakecase'
+import startCase from 'lodash.startcase'
 import styled from 'styled-components'
+import { TRANSACTION_TYPES, TRANSACTION_TYPES_BASIC, TRANSACTION_TYPES_ADVANCED } from '../common/constants'
 
 const Table = styled.table`
   margin: 2em 0;
 `
-
-const typeLabels = [
-  'Author Reward',
-  'Curation Reward',
-  'Vote',
-  'Transfer',
-  'Comment'
-]
-
-const typeLabelsAdditional = [
-  'Account Witness Vote',
-  'Claim Reward Balance',
-  'Custom JSON',
-  'Comment Options',
-  'Transfer To Vesting',
-  'Delegate Vesting Shares',
-  'Comment Benefactor Reward',
-  'Account Create With Delegation',
-  'Fill Order',
-  'Limit Order Cancel',
-  'Limit Order Create',
-  'Return Vesting Delegation',
-  'Producer Reward',
-  'Feed Publish',
-  'Account Witness Proxy',
-  'Account Update',
-  'Delete Comment'
-]
 
 class Activity extends Component {
   state = {
@@ -77,7 +50,7 @@ class Activity extends Component {
   setCheckmarks = (typeLabels, check) => {
     let newFilterState = { ...this.state.filter }
     typeLabels.forEach((typeLabel) => {
-      newFilterState[snakeCase(typeLabel)] = check
+      newFilterState[typeLabel] = check
     })
     this.setState({filter: newFilterState})
   }
@@ -94,18 +67,18 @@ class Activity extends Component {
     if (this.state.showAllCheckmarks) {
       if (this.state.checkAllCheckmarks) {
         // uncheck all
-        this.setCheckmarks(typeLabels.concat(typeLabelsAdditional), false)
+        this.setCheckmarks(TRANSACTION_TYPES, false)
       } else {
         // check all
-        this.setCheckmarks(typeLabels.concat(typeLabelsAdditional), true)
+        this.setCheckmarks(TRANSACTION_TYPES, true)
       }
     } else {
       if (this.state.checkAllCheckmarks) {
         // uncheck regular only
-        this.setCheckmarks(typeLabels, false)
+        this.setCheckmarks(TRANSACTION_TYPES_BASIC, false)
       } else {
         // check regular only
-        this.setCheckmarks(typeLabels, true)
+        this.setCheckmarks(TRANSACTION_TYPES_BASIC, true)
       }
     }
     this.setState({checkAllCheckmarks: !this.state.checkAllCheckmarks})
@@ -113,7 +86,7 @@ class Activity extends Component {
 
   handleShowAllCheckmarks = () => {
     if (this.state.showAllCheckmarks) {
-      this.setCheckmarks(typeLabelsAdditional, false)
+      this.setCheckmarks(TRANSACTION_TYPES_ADVANCED, false)
     }
     this.setState({showAllCheckmarks: !this.state.showAllCheckmarks})
   }
@@ -140,29 +113,29 @@ class Activity extends Component {
         <hr />
         <div>
           {
-            typeLabels.map((label) => {
+            [...TRANSACTION_TYPES_BASIC].map((label) => {
               return (
                 <CheckboxStateless
                   key={label}
-                  isChecked={this.state.filter[snakeCase(label)]}
-                  value={snakeCase(label)}
-                  label={label}
+                  isChecked={this.state.filter[label]}
+                  value={label}
+                  label={startCase(label)}
                   onChange={this.handleFilterChange}
-                  name={snakeCase(label)}
+                  name={label}
                 />
               )
             })
           }
           {
-            this.state.showAllCheckmarks && typeLabelsAdditional.map((label) => {
+            this.state.showAllCheckmarks && [...TRANSACTION_TYPES_ADVANCED].map((label) => {
               return (
                 <CheckboxStateless
                   key={label}
-                  isChecked={this.state.filter[snakeCase(label)]}
-                  value={snakeCase(label)}
-                  label={label}
+                  isChecked={this.state.filter[label]}
+                  value={label}
+                  label={startCase(label)}
                   onChange={this.handleFilterChange}
-                  name={snakeCase(label)}
+                  name={label}
                 />
               )
             })
