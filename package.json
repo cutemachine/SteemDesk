@@ -44,6 +44,7 @@
     "lodash.has": "^4.5.2",
     "lodash.last": "^3.0.0",
     "lodash.snakecase": "^4.1.1",
+    "lodash.startcase": "^4.4.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
