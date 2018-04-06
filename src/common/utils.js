@@ -1,3 +1,12 @@
+// helper function to filter a given accountHistory array for given transactionType
+// returns a new, filter array with transactions
+export const filterForTransactionType = (accountHistory, transactionType) => {
+  return accountHistory.filter((tx) => {
+    const txType = tx[1].op[0]
+    return txType === transactionType
+  })
+}
+
 // Formats a reputation score from a Steem accounts object to human readable score.
 export const formatReputation = (reputation, digits = 6) => {
   const isNegative = (reputation < 0)
