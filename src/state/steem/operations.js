@@ -4,6 +4,8 @@ import last from 'lodash.last'
 import { uiOperations } from '../ui'
 import { formatReputation, vests2Steem } from '../../common/utils'
 
+const INITIAL_FETCH_LIMIT = 300
+
 const {
   accountHistorySet,
   accountHistoryStatusSet,
@@ -19,6 +21,8 @@ const {
 
 // Thunks
 const accountHistoryLoadMore = () => async (dispatch, getState) => {
+  let fetchLimit = INITIAL_FETCH_LIMIT
+
   // Cannor load account history data without a valid username
   if (getState().steem.usernameStatus !== 'VALID') return
 
@@ -28,18 +32,23 @@ const accountHistoryLoadMore = () => async (dispatch, getState) => {
   // Account history has been loaded completely, therefore exit
   if (getState().steem.accountHistoryStatus === 'LOADED_COMPLETELY') return
 
-  const lastLoadedSequenceID = last(getState().steem.accountHistory)[0]
+  const nextSequenceIdToLoad = last(getState().steem.accountHistory)[0] - 1
   // If initial load has already loaded the complete history, set status and exit
-  if (lastLoadedSequenceID === 0) {
+  if (nextSequenceIdToLoad <= 0) {
     dispatch(accountHistoryStatusSet('LOADED_COMPLETELY'))
     return
   }
+
+  // From must be greater than limit when calling getAccountHistoryAsync(name, from, limit)
+  if (nextSequenceIdToLoad <= fetchLimit) {
+    fetchLimit = nextSequenceIdToLoad - 1
+  }
   dispatch(accountHistoryStatusSet('LOADING'))
-  const accountHistoryMoreData = await steem.api.getAccountHistoryAsync(getState().steem.username, lastLoadedSequenceID - 1, 100)
+  const accountHistoryMoreData = await steem.api.getAccountHistoryAsync(getState().steem.username, nextSequenceIdToLoad, fetchLimit)
   dispatch(accountHistoryStatusSet('LOADED'))
   const accountHistoryMergedData = getState().steem.accountHistory.concat(accountHistoryMoreData.reverse())
   dispatch(accountHistorySet(accountHistoryMergedData))
-  if (last(getState().steem.accountHistory)[0] === 0) {
+  if (last(getState().steem.accountHistory)[0] <= 1) {
     dispatch(accountHistoryStatusSet('LOADED_COMPLETELY'))
   }
 }
@@ -52,7 +61,7 @@ const usernameSubmitted = (name) => async (dispatch, getState) => {
     steem.api.setOptions({ url: 'wss://rpc.buildteam.io' })
     let [accounts, accountHistory, followCount, delegations, dynamicGlobalProperties] = await Promise.all([
       steem.api.getAccountsAsync([name]),
-      steem.api.getAccountHistoryAsync(name, -1, 100),
+      steem.api.getAccountHistoryAsync(name, -1, INITIAL_FETCH_LIMIT),
       steem.api.getFollowCountAsync(name),
       steem.api.getVestingDelegationsAsync(name, -1, 100),
       steem.api.getDynamicGlobalPropertiesAsync()
