@@ -143,6 +143,7 @@ class Activity extends Component {
             typeLabels.map((label) => {
               return (
                 <CheckboxStateless
+                  key={label}
                   isChecked={this.state.filter[snakeCase(label)]}
                   value={snakeCase(label)}
                   label={label}
@@ -156,6 +157,7 @@ class Activity extends Component {
             this.state.showAllCheckmarks && typeLabelsAdditional.map((label) => {
               return (
                 <CheckboxStateless
+                  key={label}
                   isChecked={this.state.filter[snakeCase(label)]}
                   value={snakeCase(label)}
                   label={label}
