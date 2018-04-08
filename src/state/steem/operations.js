@@ -2,7 +2,8 @@ import actions from './actions'
 import steem from 'steem'
 import last from 'lodash.last'
 import { uiOperations } from '../ui'
-import { formatReputation, vests2Steem } from '../../common/utils'
+import { filterForTransactionType, formatReputation, vests2Steem } from '../../common/utils'
+import { TRANSACTION_TYPES } from '../../common/constants'
 
 const INITIAL_FETCH_LIMIT = 300
 
@@ -20,6 +21,58 @@ const {
 } = actions
 
 // Thunks
+const buildDelegationHistory = () => async (dispatch, getState) => {
+  const accountHistory = getState().steem.accountHistory
+  const currentDelegations = getState().steem.delegations
+
+  // delegationKeys is an array with delegation keys
+  // delegationKeys = [
+  //   'cutemachine_jerrybanfield',
+  //   'cutemachine_postpromoter'
+  // ]
+  const delegationKeys = new Set()
+  currentDelegations.forEach((delegation) => {
+    delegationKeys.add(`${delegation.delegator}_${delegation.delegatee}`)
+  })
+  console.log('dkeys', delegationKeys)
+
+  // filter account history for relevant transaction types
+  const filteredAccountHistory = accountHistory.filter((tx) => {
+    const txType = tx[1].op[0]
+    return (txType === 'transfer' || txType === 'delegate_vesting_shares')
+  })
+
+  // delegationHistory is an object with delegationKeys pointing to an array with the relevant transactions
+  // delegationHistory = {
+  //   delegator_delegatee: [ txData1, txData2, … ]
+  // }
+  const delegationHistory = {}
+  delegationKeys.forEach((delegationKey) => {
+    delegationHistory[delegationKey] = []
+  })
+
+  filteredAccountHistory.forEach((tx) => {
+    const txType = tx[1].op[0]
+    const txData = tx[1].op[1]
+    if (txType === 'transfer') {
+      // tx is of type TRANSFER
+      const delegationKey = `${txData.to}_${txData.from}`
+      if (delegationKeys.has(delegationKey)) {
+        console.log('dk', delegationKey)
+        delegationHistory[delegationKey].push(tx)
+      }
+    } else {
+      // tx is of type DELEGATE_VESTING_SHARES
+      const delegationKey = `${txData.delegator}_${txData.delegatee}`
+      // remove delegation key, because it is either unknow or we want to stop recording tx for it
+      delegationKeys.delete(delegationKey)
+    }
+  })
+  console.log('dh', delegationHistory)
+
+  return delegationHistory
+}
+
 const accountHistoryLoadMore = () => async (dispatch, getState) => {
   let fetchLimit = INITIAL_FETCH_LIMIT
 
@@ -109,6 +162,7 @@ export default {
   accountHistorySet,
   accountHistoryStatusSet,
   accountHistoryLoadMore,
+  buildDelegationHistory,
   usernameStatusChanged,
   usernameChanged,
   usernameSubmitted,
