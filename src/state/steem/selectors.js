@@ -4,6 +4,7 @@ import head from 'lodash.head'
 import last from 'lodash.last'
 import isEmpty from 'lodash.isempty'
 import moment from 'moment'
+import { TRANSACTION_TYPES } from '../../common/constants'
 
 const buildDelegationHistory = (state) => {
   const accountHistory = state.accountHistory
@@ -35,14 +36,13 @@ const buildDelegationHistory = (state) => {
   accountHistory.forEach((tx) => {
     const txType = tx[1].op[0]
     const txData = tx[1].op[1]
-    if (txType === 'transfer') {
-      // tx is of type TRANSFER
+    if (txType === TRANSACTION_TYPES.TRANSFER) {
       const delegationKey = `${txData.to}_${txData.from}`
       if (delegationKeys.includes(delegationKey)) {
         delegationHistory[delegationKey].transfers.push(tx)
       }
     } else {
-      // tx is of type DELEGATE_VESTING_SHARES
+      // tx is of type TRANSACTION_TYPES.DELEGATE_VESTING_SHARES
       const delegationKey = `${txData.delegator}_${txData.delegatee}`
       // Only process current delegations, ignore the rest
       if (delegationKeys.includes(delegationKey)) {

@@ -67,18 +67,18 @@ class Activity extends Component {
     if (this.state.showAllCheckmarks) {
       if (this.state.checkAllCheckmarks) {
         // uncheck all
-        this.setCheckmarks(TRANSACTION_TYPES, false)
+        this.setCheckmarks(Object.values(TRANSACTION_TYPES), false)
       } else {
         // check all
-        this.setCheckmarks(TRANSACTION_TYPES, true)
+        this.setCheckmarks(Object.values(TRANSACTION_TYPES), true)
       }
     } else {
       if (this.state.checkAllCheckmarks) {
         // uncheck regular only
-        this.setCheckmarks(TRANSACTION_TYPES_BASIC, false)
+        this.setCheckmarks(Object.values(TRANSACTION_TYPES_BASIC), false)
       } else {
         // check regular only
-        this.setCheckmarks(TRANSACTION_TYPES_BASIC, true)
+        this.setCheckmarks(Object.values(TRANSACTION_TYPES_BASIC), true)
       }
     }
     this.setState({checkAllCheckmarks: !this.state.checkAllCheckmarks})
@@ -86,7 +86,7 @@ class Activity extends Component {
 
   handleShowAllCheckmarks = () => {
     if (this.state.showAllCheckmarks) {
-      this.setCheckmarks(TRANSACTION_TYPES_ADVANCED, false)
+      this.setCheckmarks(Object.values(TRANSACTION_TYPES_ADVANCED), false)
     }
     this.setState({showAllCheckmarks: !this.state.showAllCheckmarks})
   }
@@ -113,7 +113,7 @@ class Activity extends Component {
         <hr />
         <div>
           {
-            [...TRANSACTION_TYPES_BASIC].map((label) => {
+            Object.values(TRANSACTION_TYPES_BASIC).map((label) => {
               return (
                 <CheckboxStateless
                   key={label}
@@ -127,7 +127,7 @@ class Activity extends Component {
             })
           }
           {
-            this.state.showAllCheckmarks && [...TRANSACTION_TYPES_ADVANCED].map((label) => {
+            this.state.showAllCheckmarks && Object.values(TRANSACTION_TYPES_ADVANCED).map((label) => {
               return (
                 <CheckboxStateless
                   key={label}
