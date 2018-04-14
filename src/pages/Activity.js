@@ -18,6 +18,7 @@ const Table = styled.table`
 `
 
 class Activity extends Component {
+  // TODO: Refactor filter using TRANSACTION_TYPES constants
   state = {
     filter: {
       author_reward: true,
