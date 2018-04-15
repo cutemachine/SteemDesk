@@ -6,11 +6,11 @@ const actionsContent = (
   <UserInput />
 )
 
-const PageHeaderWithUserInput = ({title}) => (
+const PageHeaderWithUserInput = ({title, breadcrumbs = null, bottomBar = null}) => (
   <PageHeader
-    breadcrumbs={null}
+    breadcrumbs={breadcrumbs}
     actions={actionsContent}
-    bottomBar={null}
+    bottomBar={bottomBar}
   >
     {title}
   </PageHeader>
