@@ -8,7 +8,7 @@ import MainSection from '../components/MainSection'
 import ContentWrapper from '../components/ContentWrapper'
 import PageHeaderWithUserInput from '../components/PageHeaderWithUserInput'
 
-class Home extends Component {
+class About extends Component {
   render () {
     const Icon = <ErrorIcon label='Error icon' secondaryColor='inherit' />
 
@@ -20,7 +20,7 @@ class Home extends Component {
               ? <Banner icon={Icon} isOpen appearance='error'>{this.props.errorMessage}</Banner>
               : null
           }
-          <PageHeaderWithUserInput title='SteemDesk' />
+          <PageHeaderWithUserInput title='About SteemDesk' />
           <MainSection />
         </Page>
       </ContentWrapper>
@@ -34,4 +34,4 @@ const mapStateToProps = (state) => {
   return { errorMessage }
 }
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps)(About)

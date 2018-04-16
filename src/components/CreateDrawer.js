@@ -8,7 +8,8 @@ const createItems = [
   {
     title: null,
     items: [
-      ['/#home', 'Home', 'Home', EmojiNatureIcon]
+      // TODO: Add about page and link to it here
+      ['/about', 'About', 'About', EmojiNatureIcon]
     ]
   },
   {

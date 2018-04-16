@@ -7,7 +7,6 @@ import Navigation, {
   AkContainerNavigationNested,
   AkNavigationItem
 } from '@atlaskit/navigation'
-import HomeFilledIcon from '@atlaskit/icon/glyph/home-filled'
 import DashboardIcon from '@atlaskit/icon/glyph/dashboard'
 import CreateIcon from '@atlaskit/icon/glyph/add'
 import PageIcon from '@atlaskit/icon/glyph/page'
@@ -26,19 +25,14 @@ export default class NavigationPanel extends Component {
       stack: [
         [
           {
-            title: 'Home',
+            title: 'Dashboard',
             url: '/',
-            Icon: HomeFilledIcon
+            Icon: DashboardIcon
           },
           {
             title: 'Activity',
             url: '/activity',
             Icon: PageIcon
-          },
-          {
-            title: 'Dashboard',
-            url: '/dashboard',
-            Icon: DashboardIcon
           },
           {
             title: 'Delegations …',
@@ -55,7 +49,12 @@ export default class NavigationPanel extends Component {
                 Icon: FollowersIcon
               }
             ]
-          }
+          },
+          {
+            title: 'About',
+            url: '/about',
+            Icon: EmojiNatureIcon
+          },
         ]
       ]
     }
