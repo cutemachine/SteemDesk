@@ -7,6 +7,10 @@ import Banner from '@atlaskit/banner'
 import { steemSelectors } from '../state/steem'
 import PageHeaderWithUserInput from '../components/PageHeaderWithUserInput'
 import ContentWrapper from '../components/ContentWrapper'
+import Level from '../components/Level'
+import LevelItem from '../components/LevelItem'
+import Heading from '../components/Heading'
+import Title from '../components/Title'
 
 class Dashboard extends Component {
   static propTypes = {
@@ -27,16 +31,28 @@ class Dashboard extends Component {
           <PageHeaderWithUserInput title='Dashboard' />
           <Grid layout='fluid'>
             <GridColumn medium={4}>
-              <h3>Reputation</h3>
-              <p>{this.props.reputation}</p>
+              <Level>
+                <LevelItem>
+                  <Heading>Reputation</Heading>
+                  <Title>{this.props.reputation}</Title>
+                </LevelItem>
+              </Level>
             </GridColumn>
             <GridColumn medium={4}>
-              <h3>Followers</h3>
-              <p>{this.props.followCount.follower_count}</p>
+              <Level>
+                <LevelItem>
+                  <Heading>Followers</Heading>
+                  <Title>{this.props.followCount.follower_count}</Title>
+                </LevelItem>
+              </Level>
             </GridColumn>
             <GridColumn medium={4}>
-              <h3>Following</h3>
-              <p>{this.props.followCount.following_count}</p>
+              <Level>
+                <LevelItem>
+                  <Heading>Following</Heading>
+                  <Title>{this.props.followCount.following_count}</Title>
+                </LevelItem>
+              </Level>
             </GridColumn>
           </Grid>
         </Page>

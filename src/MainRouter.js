@@ -5,8 +5,9 @@ import App from './App'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import configureStore from './state/store'
-
+import { ThemeProvider } from 'styled-components'
 import createHistory from 'history/createBrowserHistory'
+import theme from './theme'
 
 const history = createHistory()
 
@@ -45,11 +46,13 @@ export default class MainRouter extends Component {
 
   render () {
     return (
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Route component={this.appWithPersistentNav()} />
-        </ConnectedRouter>
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <ConnectedRouter history={history}>
+            <Route component={this.appWithPersistentNav()} />
+          </ConnectedRouter>
+        </Provider>
+      </ThemeProvider>
     )
   }
 }
