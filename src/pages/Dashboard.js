@@ -30,6 +30,22 @@ class Dashboard extends Component {
           }
           <PageHeaderWithUserInput title='Dashboard' />
           <Grid layout='fluid'>
+            <GridColumn medium={6}>
+              <Level>
+                <LevelItem>
+                  <Heading>Steem</Heading>
+                  <Title>2.94</Title>
+                </LevelItem>
+              </Level>
+            </GridColumn>
+            <GridColumn medium={6}>
+              <Level>
+                <LevelItem>
+                  <Heading>SBD</Heading>
+                  <Title>3.03</Title>
+                </LevelItem>
+              </Level>
+            </GridColumn>
             <GridColumn medium={4}>
               <Level>
                 <LevelItem>
