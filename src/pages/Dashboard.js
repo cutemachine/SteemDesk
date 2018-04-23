@@ -7,7 +7,7 @@ import ErrorIcon from '@atlaskit/icon/glyph/error'
 import Banner from '@atlaskit/banner'
 import Spinner from '@atlaskit/spinner'
 import { steemSelectors } from '../state/steem'
-import { cryptoSelectors, cryptoOperations } from '../state/crypto'
+import { cryptoSelectors } from '../state/crypto'
 import PageHeaderWithUserInput from '../components/PageHeaderWithUserInput'
 import ContentWrapper from '../components/ContentWrapper'
 import Level from '../components/Level'
@@ -18,11 +18,6 @@ import Title from '../components/Title'
 class Dashboard extends Component {
   static propTypes = {
     errorMessage: PropTypes.string
-  }
-
-  handleClick = () => {
-    this.props.priceHistoryRequested('SBD')
-    this.props.priceHistoryRequested('STEEM')
   }
 
   render () {
@@ -41,7 +36,7 @@ class Dashboard extends Component {
             <GridColumn medium={6}>
               <Level>
                 <LevelItem>
-                  <Heading onClick={this.handleClick}>Steem</Heading>
+                  <Heading>Steem</Heading>
                   { // Show spinner when price history is loading
                     (this.props.priceHistoryStatus === 'LOADING')
                       ? <Spinner size='small' />
@@ -93,10 +88,6 @@ class Dashboard extends Component {
   }
 }
 
-const mapDispatchToProps = {
-  priceHistoryRequested: cryptoOperations.priceHistoryRequested
-}
-
 const mapStateToProps = (state) => {
   const priceHistory = cryptoSelectors.selectPriceHistory(state)
   const priceHistoryStatus = cryptoSelectors.selectPriceHistoryStatus(state)
@@ -107,4 +98,4 @@ const mapStateToProps = (state) => {
   return { priceHistory, priceHistoryStatus, reputation, followCount, errorMessage }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+export default connect(mapStateToProps)(Dashboard)

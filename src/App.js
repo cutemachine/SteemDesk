@@ -13,6 +13,7 @@ import About from './pages/About'
 import Navigation from './components/Navigation'
 import { selectors } from './state/rootReducer'
 import { uiOperations } from './state/ui'
+import { cryptoOperations } from './state/crypto'
 import '@atlaskit/css-reset'
 
 class App extends Component {
@@ -37,6 +38,12 @@ class App extends Component {
 
   onFlagDismissed = (dismissedFlagId) => {
     this.props.deleteFlag(dismissedFlagId)
+  }
+
+  componentDidMount () {
+    // this is a good place to fill the Redux store with some data needed by the whole application
+    this.props.priceHistoryRequested('SBD')
+    this.props.priceHistoryRequested('STEEM')
   }
 
   render () {
@@ -86,7 +93,8 @@ class App extends Component {
 
 const mapDispatchToProps = {
   showModal: uiOperations.showModal,
-  deleteFlag: uiOperations.deleteFlag
+  deleteFlag: uiOperations.deleteFlag,
+  priceHistoryRequested: cryptoOperations.priceHistoryRequested
 }
 
 const mapStateToProps = (state) => {
