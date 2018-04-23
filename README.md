@@ -46,3 +46,9 @@ You want to contribute to this project? Great. You can contact me through my [Gi
 ## Need Help?
 
 Please contact me through my profile page on GitHub or on Steemit ([@cutemachine](https://steemit.com/@cutemachine)). I'm happy to help if I can.
+
+
+## Thank You
+
+Prices for cryptos are supported by [CryptoCompare](https://min-api.cryptocompare.com/).
+

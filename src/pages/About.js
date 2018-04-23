@@ -22,6 +22,8 @@ class About extends Component {
           }
           <PageHeaderWithUserInput title='About SteemDesk' />
           <MainSection />
+          <h3>Many Thanks</h3>
+          <p>… to <a href="https://min-api.cryptocompare.com/">CryptoCompare</a> for offering an awesome crypto API.</p>
         </Page>
       </ContentWrapper>
     )
