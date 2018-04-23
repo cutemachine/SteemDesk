@@ -2,11 +2,13 @@ import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import uiReducer, { uiSelectors } from './ui'
 import steemReducer, { steemSelectors } from './steem'
+import cryptoReducer, { cryptoSelectors } from './crypto'
 
 const rootReducer = combineReducers({
   router: routerReducer,
   ui: uiReducer,
-  steem: steemReducer
+  steem: steemReducer,
+  crypto: cryptoReducer
 })
 
 export default rootReducer
@@ -27,5 +29,9 @@ export const selectors = {
   selectFollowCount: state => steemSelectors.selectFollowCount(state.steem),
   selectReputation: state => steemSelectors.selectReputation(state.steem),
   selectUsername: state => steemSelectors.selectUsername(state.steem),
-  selectUsernameStatus: state => steemSelectors.selectUsernameStatus(state.steem)
+  selectUsernameStatus: state => steemSelectors.selectUsernameStatus(state.steem),
+
+  // Crypto state
+  selectPriceHistory: state => cryptoSelectors.selectPriceHistory(state.crypto),
+  selectPriceHistoryStatus: state => cryptoSelectors.selectPriceHistoryStatus(state.crypto)
 }
