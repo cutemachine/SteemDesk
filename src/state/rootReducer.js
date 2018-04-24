@@ -32,6 +32,8 @@ export const selectors = {
   selectUsernameStatus: state => steemSelectors.selectUsernameStatus(state.steem),
 
   // Crypto state
+  selectSteemPrice: state => cryptoSelectors.selectSteemPrice(state.crypto),
+  selectSBDPrice: state => cryptoSelectors.selectSBDPrice(state.crypto),
   selectPriceHistory: state => cryptoSelectors.selectPriceHistory(state.crypto),
   selectPriceHistoryStatus: state => cryptoSelectors.selectPriceHistoryStatus(state.crypto)
 }
