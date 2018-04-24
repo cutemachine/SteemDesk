@@ -40,7 +40,7 @@ class Dashboard extends Component {
                   { // Show spinner when price history is loading
                     (this.props.priceHistoryStatus === 'LOADING')
                       ? <Spinner size='small' />
-                      : <Title>{last(this.props.priceHistory.STEEM.inUSD).close}</Title>
+                      : <Title>{this.props.steemPrice}</Title>
                   }
                 </LevelItem>
               </Level>
@@ -52,7 +52,7 @@ class Dashboard extends Component {
                   { // Show spinner when price history is loading
                     (this.props.priceHistoryStatus === 'LOADING')
                       ? <Spinner size='small' />
-                      : <Title>{last(this.props.priceHistory.SBD.inUSD).close}</Title>
+                      : <Title>{this.props.sbdPrice}</Title>
                   }
                 </LevelItem>
               </Level>
@@ -89,13 +89,14 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const priceHistory = cryptoSelectors.selectPriceHistory(state)
+  const steemPrice = cryptoSelectors.selectSteemPrice(state)
+  const sbdPrice = cryptoSelectors.selectSBDPrice(state)
   const priceHistoryStatus = cryptoSelectors.selectPriceHistoryStatus(state)
   const reputation = steemSelectors.selectReputation(state)
   const followCount = steemSelectors.selectFollowCount(state)
   const errorMessage = steemSelectors.selectErrorMessage(state)
 
-  return { priceHistory, priceHistoryStatus, reputation, followCount, errorMessage }
+  return { steemPrice, sbdPrice, priceHistoryStatus, reputation, followCount, errorMessage }
 }
 
 export default connect(mapStateToProps)(Dashboard)

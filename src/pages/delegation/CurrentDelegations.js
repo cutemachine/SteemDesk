@@ -15,6 +15,7 @@ import Button from '@atlaskit/button'
 import Spinner from '@atlaskit/spinner'
 
 import { steemOperations, steemSelectors } from '../../state/steem'
+import { cryptoSelectors } from '../../state/crypto'
 import ContentWrapper from '../../components/ContentWrapper'
 import PageHeaderWithUserInput from '../../components/PageHeaderWithUserInput'
 import { unitString2Number } from '../../common/utils'
@@ -56,7 +57,7 @@ class CurrentDelegations extends Component {
       }
     })
     let delegatedSP = unitString2Number(delegation.steemPower)
-    apr = ((earnedSBD + earnedSteem) / daysDelegated) / delegatedSP * 100 * 365
+    apr = (((earnedSBD * this.props.sbdPrice / this.props.steemPrice) + earnedSteem) / daysDelegated) / delegatedSP * 100 * 365
     return {
       earnedSteem: earnedSteem.toFixed(2),
       earnedSBD: earnedSBD.toFixed(2),
@@ -152,12 +153,14 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
+  const steemPrice = cryptoSelectors.selectSteemPrice(state)
+  const sbdPrice = cryptoSelectors.selectSBDPrice(state)
   const accountHistory = steemSelectors.selectAccountHistory(state)
   const accountHistoryStatus = steemSelectors.selectAccountHistoryStatus(state)
   const delegationHistory = steemSelectors.selectDelegationHistory(state)
   const errorMessage = steemSelectors.selectErrorMessage(state)
 
-  return { accountHistory, accountHistoryStatus, delegationHistory, errorMessage }
+  return { steemPrice, sbdPrice, accountHistory, accountHistoryStatus, delegationHistory, errorMessage }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentDelegations)
