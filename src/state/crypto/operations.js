@@ -13,10 +13,10 @@ const priceHistoryRequested = (symbol = 'STEEM') => async (dispatch, getState) =
     let [priceHistoryInUSD, priceHistoryInBTC] = await Promise.all([
       window.fetch(
         `https://min-api.cryptocompare.com/data/histoday?fsym=${symbol}&tsym=USD&limit=14`
-      ).then(res => res.json()),
+      ).then(response => response.json()),
       window.fetch(
         `https://min-api.cryptocompare.com/data/histoday?fsym=${symbol}&tsym=BTC&limit=14`
-      ).then(res => res.json())
+      ).then(response => response.json())
     ])
 
     if (priceHistoryInUSD.Data.length === 0) { throw new Error(`Sorry, problem retrieving price history in USD for symbol ${symbol}.`) }

@@ -84,7 +84,6 @@ class CurrentDelegations extends Component {
 
     forOwn(delegationHistory, (delegation, key) => {
       const delegationROI = this.roi(delegation)
-      const delegatedSP = delegation.steemPower.split(' ', 2)[0]
       delegationRows.push((
         <tr key={key}>
           <td>{delegation.delegatee}</td>
@@ -94,19 +93,22 @@ class CurrentDelegations extends Component {
           <td>{delegation.hasMoreData ? '—' : delegation.startDate.format('MMMM Do YYYY')}</td>
           <td>{delegation.hasMoreData ? '—' : delegationROI.daysDelegated}</td>
           <td>{delegationROI.annualPercentageReturn}&nbsp;%</td>
-          <td>{delegation.hasMoreData
-            ? <Button
-                spacing='compact'
-                iconAfter={
-                  this.props.accountHistoryStatus === 'LOADING' && <Spinner
-                    size='small'
-                  />
-                }
-                onClick={this.props.accountHistoryLoadMore}
-              >
-                Load More
-              </Button>
-            : 'complete'}
+          <td>
+            {
+              delegation.hasMoreData
+                ? <Button
+                  spacing='compact'
+                  iconAfter={
+                    this.props.accountHistoryStatus === 'LOADING' && <Spinner
+                      size='small'
+                    />
+                  }
+                  onClick={this.props.accountHistoryLoadMore}
+                >
+                  Load More
+                </Button>
+                : 'complete'
+            }
           </td>
         </tr>
       ))
