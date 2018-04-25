@@ -5,14 +5,15 @@ import { connect } from 'react-redux'
 import Flag, { FlagGroup } from '@atlaskit/flag'
 import Modal from '@atlaskit/modal-dialog'
 import Page from '@atlaskit/page'
-import Home from './pages/Home'
 import Activity from './pages/Activity'
 import Dashboard from './pages/Dashboard'
 import CurrentDelegations from './pages/delegation/CurrentDelegations'
 import DelegateSteemPower from './pages/delegation/DelegateSteemPower'
+import About from './pages/About'
 import Navigation from './components/Navigation'
 import { selectors } from './state/rootReducer'
 import { uiOperations } from './state/ui'
+import { cryptoOperations } from './state/crypto'
 import '@atlaskit/css-reset'
 
 class App extends Component {
@@ -39,6 +40,12 @@ class App extends Component {
     this.props.deleteFlag(dismissedFlagId)
   }
 
+  componentDidMount () {
+    // this is a good place to fill the Redux store with some data needed by the whole application
+    this.props.priceHistoryRequested('SBD')
+    this.props.priceHistoryRequested('STEEM')
+  }
+
   render () {
     return (
       <div>
@@ -46,11 +53,11 @@ class App extends Component {
           navigationWidth={this.context.navOpenState.width}
           navigation={<Navigation location={this.props.location} />}
         >
-          <Route exact path='/' component={Home} />
-          <Route path='/dashboard' component={Dashboard} />
+          <Route exact path='/' component={Dashboard} />
           <Route path='/activity' component={Activity} />
           <Route path='/delegation/current' component={CurrentDelegations} />
           <Route path='/delegation/delegate' component={DelegateSteemPower} />
+          <Route path='/about' component={About} />
         </Page>
         <div>
           <FlagGroup onDismissed={this.onFlagDismissed}>
@@ -86,7 +93,8 @@ class App extends Component {
 
 const mapDispatchToProps = {
   showModal: uiOperations.showModal,
-  deleteFlag: uiOperations.deleteFlag
+  deleteFlag: uiOperations.deleteFlag,
+  priceHistoryRequested: cryptoOperations.priceHistoryRequested
 }
 
 const mapStateToProps = (state) => {
