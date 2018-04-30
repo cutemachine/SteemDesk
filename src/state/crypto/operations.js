@@ -1,4 +1,5 @@
 import actions from './actions'
+import { CRYPTOS } from '../../common/constants'
 
 const {
   priceHistorySet,
@@ -12,10 +13,10 @@ const priceHistoryRequested = (symbol = 'STEEM') => async (dispatch, getState) =
     // async request of prices here
     let [priceHistoryInUSD, priceHistoryInBTC] = await Promise.all([
       window.fetch(
-        `https://min-api.cryptocompare.com/data/histoday?fsym=${symbol}&tsym=USD&limit=14`
+        `https://min-api.cryptocompare.com/data/histoday?fsym=${CRYPTOS[symbol].symbol}&tsym=USD&limit=14`
       ).then(response => response.json()),
       window.fetch(
-        `https://min-api.cryptocompare.com/data/histoday?fsym=${symbol}&tsym=BTC&limit=14`
+        `https://min-api.cryptocompare.com/data/histoday?fsym=${CRYPTOS[symbol].symbol}&tsym=BTC&limit=14`
       ).then(response => response.json())
     ])
 

@@ -34,7 +34,7 @@ export const TRANSACTION_TYPES = {
 export const CRYPTOS = {
   SBD: {
     name: 'Steem Dollars',
-    symbol: 'SBD'
+    symbol: 'SBD*'
   },
   STEEM: {
     name: 'Steem',
