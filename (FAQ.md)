@@ -1,28 +1,27 @@
-What is SteemDesk?
+## What is SteemDesk?
 
-SteemDesk is an existing project which provides missing tools for Steemit users. This include the ability to delegate Steem Power.
+SteemDesk is an existing project which provides missing tools for Steemit users. This includes the ability to delegate Steem Power.
 
-How do I create a SteemDesk account?
+## How do I create a SteemDesk account?
 
-You cannot create an account on StemDesk, but you can insert your Steemit.com username and see some tools available on SteemDesk for your use.
+You cannot create an account on StemDesk, but you can insert your Steemit.com username to use the available tools on SteemDesk.
  
-What is Steemit?
+## What is Steemit?
 
-Steemit is a social networking and blogging site on the Steem blockchain. The Steem blockchain reward users blog post, videos, music, articles etc in cryptocurrencies; STEEM and Steem Dollars  
+Steemit is a social networking and blogging site on the Steem blockchain. The Steem blockchain rewards user's blog posts, videos, and other contributions in the cryptocurrencies STEEM and SBD.  
 
-What is the relationship between SteemDesk and Steemit.com?
+## What is the relationship between SteemDesk and Steemit.com?
 
-SteemDesk is a tool associated with steemit such as view of accounts activity, delegation of Steem Power. More features will add more in the future!
+SteemDesk is a collections of tools associated with Steemit; such as view accounts activity, delegation of Steem Power. More features will be addes in the future.
 
-What is Steem ?
+## What is Steem?
 
 Steem is a blockchain-based social media platform where anyone can earn rewards. The Steem blockchain not only holds a cryptocurrency token called STEEM, but also content created by its users, a system to vote on that content, and many other features you would find on popular social networking sites
 
-What are the missing tools to delegate SP ?
+## What are the missing tools to delegate SP?
 
-SteemDesk also provides tools to delegate SP through the website. The SP delegate goes directly to the target. just enter the amount and username
+SteemDesk also provides tools to delegate SP through the website. The SP delegation goes directly to the target account. Just enter the amount and the username.
 
-Where can I leave feedbacks or suggestions or report bugs?
+## Where can I leave feedback, suggestions, or report bugs?
 
-Our GitHub issue page -
-https://github.com/cutemachine/SteemDesk/issues 
+[Please, use the project's GitHub issue page.](https://github.com/cutemachine/SteemDesk/issues)
