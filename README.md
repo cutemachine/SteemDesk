@@ -42,6 +42,8 @@ Building the app locally on your computer should be straightforward. Just clone 
 
 You want to contribute to this project? Great. You can contact me through my [Github profile page](https://github.com/cutemachine). Please contact me before sending a pull request so we can align our forces :)
 
+Please notice that I will merge pull requests with minor contributions the earliest after __three weeks__.
+
 
 ## Need Help?
 
