@@ -59,7 +59,7 @@ const usernameSubmitted = (name) => async (dispatch, getState) => {
   try {
     // Use this server, as it allows to grab the whole account history from blockchain
     // TODO: allow configuration for Steem API server in UI
-    steem.api.setOptions({ url: 'wss://rpc.buildteam.io' })
+    steem.api.setOptions({ url: 'https://api.steemit.com' })
     let [accounts, accountHistory, followCount, delegations, dynamicGlobalProperties] = await Promise.all([
       steem.api.getAccountsAsync([name]),
       steem.api.getAccountHistoryAsync(name, -1, INITIAL_FETCH_LIMIT),
