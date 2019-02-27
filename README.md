@@ -33,11 +33,6 @@ Building the app locally on your computer should be straightforward. Just clone 
     yarn start
 
 
-## Demo
-
-[Check out the live version of SteemDesk.](https://www.steemdesk.com)
-
-
 ## How To Contribute
 
 You want to contribute to this project? Great. You can contact me through my [Github profile page](https://github.com/cutemachine). Please contact me before sending a pull request so we can align our forces :)
